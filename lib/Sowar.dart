@@ -9,11 +9,12 @@ class Quran extends StatelessWidget {
 
     return  Scaffold(
       body: SafeArea(
-        child:Container(
+        child: Container(
           margin: EdgeInsets.all(3),
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/backg.jpg",),
+              image: AssetImage('assets/ahades1.png'),
+              fit: BoxFit.fill,
             ),
           ),
           child: Column(
