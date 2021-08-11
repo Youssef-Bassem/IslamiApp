@@ -42,27 +42,33 @@ class SuracontentState extends State<Suracontent> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/backg.jpg'),),),
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 150.0),
-                  child: Text( 'سورة '+ widget.suraname , style: TextStyle(fontSize: 30.0 ,color: Colors.black54),),
-                ),
-              ),
-              Expanded(
-                flex: 2,
-                child: Container(
-                    color: Colors.white,
-                    child: SingleChildScrollView(
-                        child: Text(data , style: TextStyle(fontSize: 20 ,),textDirection: TextDirection.rtl,)) ),
-              ),
-            ],
+      body:  SafeArea(
+        child: Container(
+          margin: EdgeInsets.all(3),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/ahades1.png'),
+              fit: BoxFit.fill,
+            ),
           ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 150.0),
+                child: Text( 'سورة '+ widget.suraname , style: TextStyle(fontSize: 30.0 ,color: Colors.black54),),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(
+                  color: Colors.white,
+                  child: SingleChildScrollView(
+                      child: Text(data , style: TextStyle(fontSize: 20 ,),textDirection: TextDirection.rtl,)) ),
+            ),
+          ],
+        ),
         ),
       ),
     );
