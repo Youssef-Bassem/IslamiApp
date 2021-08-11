@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
 
   final tabs = [
     radio(),
-    sebha(),
+    Tasbeeh(),
     ahades(),
     quraan(),
   ];
