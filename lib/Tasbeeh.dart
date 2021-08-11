@@ -38,24 +38,25 @@ class _TasbeehState extends State<Tasbeeh>
     return Scaffold(
       body: SafeArea(
         child:Container(
-          margin: EdgeInsets.all(3),
+          //margin: EdgeInsets.all(3),
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/bg3.png"),
+              image: AssetImage("assets/ahades1.png"),
               fit: BoxFit.cover,
             ),
           ),
           child: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Text(
                   'إسلامي',
                   style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 35,
                       fontWeight: FontWeight.bold
                   ),
                 ),
+                SizedBox(height: 50,),
                 Container(
                   margin: EdgeInsets.only(top:5),
                   child: Stack(
@@ -66,12 +67,14 @@ class _TasbeehState extends State<Tasbeeh>
                     ],
                   ),
                 ),
+                SizedBox(height: 50,),
                 Text(
                   'عدد التسبيحات',
                   style: TextStyle(
                       fontSize: 25
                   ),
                 ),
+                SizedBox(height: 20,),
                 TextButton(
                   onPressed: () { },
                   child:Text(
