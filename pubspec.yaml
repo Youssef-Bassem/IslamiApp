@@ -58,6 +58,7 @@ flutter:
     - assets/sebha.png
     - assets/radio.png
     - assets/ahades.png
+    - Quran/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
