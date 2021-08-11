@@ -55,7 +55,7 @@ class _ahadesState extends State<ahades> {
                       MakeButton('الحديث الأول', '1.txt',context),
                       MakeButton('الحديث الثاني', '2.txt', context),
                       MakeButton('الحديث الثالث', '3.txt',context),
-                      MakeButton('الحديث الرابع', '4.txt',context),
+                      MakeButton(' الحديث الرابع', '4.txt',context),
                       MakeButton('الحديث الخامس', '5.txt',context),
                       MakeButton('الحديث السادس', '6.txt',context),
                       MakeButton('الحديث السابع', '7.txt',context),

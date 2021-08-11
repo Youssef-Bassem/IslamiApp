@@ -41,6 +41,23 @@ class SuracontentState extends State<Suracontent> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      appBar: AppBar(
+        title: Container(
+            child:Text(
+              'إسلامي' ,
+              style: TextStyle(
+                fontSize: 32,
+                color: Colors.black,
+                fontWeight: FontWeight.bold
+              ),
+            ),
+          margin: EdgeInsets.only(left : 90),
+        ),
+        iconTheme: IconThemeData(color: Colors.black),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+      ),
+      extendBodyBehindAppBar: true,
       body: Container(
         margin: EdgeInsets.all(3),
         decoration: BoxDecoration(
@@ -56,8 +73,8 @@ class SuracontentState extends State<Suracontent> {
             children: <Widget>[
               Container(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 130.0, bottom: 0),
-                  child: Text( widget.suraname , style: TextStyle(fontSize: 30.0 ,color: Colors.black54),),
+                  padding: const EdgeInsets.only(top: 90.0, bottom: 0),
+                  child: Text( widget.suraname , style: TextStyle(fontSize: 30.0 ,color: Colors.black,fontWeight: FontWeight.bold),),
                 ),
               ),
               Expanded(
