@@ -47,7 +47,6 @@ class _TasbeehState extends State<Tasbeeh>
           ),
           child: Center(
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Text(
                   'إسلامي',
@@ -57,24 +56,26 @@ class _TasbeehState extends State<Tasbeeh>
                   ),
                 ),
                 SizedBox(height: 50,),
-                Container(
-                  margin: EdgeInsets.only(top:5),
-                  child: Stack(
-                    alignment: AlignmentDirectional.topCenter,
-                    children: <Widget>[
-                      Image.asset("assets/head.png"),
-                      Image.asset("assets/body.png"),
-                    ],
-                  ),
+                Stack(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(50,0,0,0),
+                      alignment: AlignmentDirectional.topCenter, 
+                      child: Image.asset("assets/head.png"),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.fromLTRB(70, 65, 0, 0),
+                      child:Image.asset("assets/body.png"),
+                    ),
+                  ],
                 ),
-                SizedBox(height: 50,),
                 Text(
                   'عدد التسبيحات',
                   style: TextStyle(
                       fontSize: 25
                   ),
                 ),
-                SizedBox(height: 20,),
                 TextButton(
                   onPressed: () { },
                   child:Text(
