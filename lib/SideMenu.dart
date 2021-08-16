@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'appprovider.dart';
 
 class SideMenu extends StatefulWidget {
   @override
@@ -7,8 +10,10 @@ class SideMenu extends StatefulWidget {
 }
 
 class _SideMenuState extends State<SideMenu> {
+  late AppProvider provider;
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppProvider>(context);
     return Drawer(
       child:Container(
         padding: EdgeInsets.symmetric(vertical: 48,horizontal: 24),
@@ -73,11 +78,13 @@ class _SideMenuState extends State<SideMenu> {
           children: [
             InkWell(
                 onTap: (){
+                  provider.changeLanguage('en');
                 },
                 child: myContainer("English")
             ),
             InkWell(
                 onTap: (){
+                  provider.changeLanguage('ar');
                 },
                 child: myContainer("العربية")
             ),

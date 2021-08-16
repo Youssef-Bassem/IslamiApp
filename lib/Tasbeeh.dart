@@ -1,9 +1,9 @@
 //Youssef Bassem
-
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const myColor = const Color(0xFFb7935f);
 int tasbeehCounter = 0;
@@ -17,7 +17,6 @@ class Tasbeeh extends StatefulWidget {
 }
 
 class _TasbeehState extends State<Tasbeeh> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +32,7 @@ class _TasbeehState extends State<Tasbeeh> {
             child: Column(
               children: <Widget>[
                 Text(
-                  'إسلامي',
+                  'اسلامي',
                   style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold
