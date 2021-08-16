@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task4_training/Ahadees.dart';
+import 'package:task4_training/SideMenu.dart';
 import 'package:task4_training/Sowar.dart';
 import 'package:task4_training/Tasbeeh.dart';
 import 'package:task4_training/Radio.dart';
@@ -20,6 +21,7 @@ class _MyAppState extends State<MyApp> {
   static const color = const Color(0xFFb7935f);
 
   final tabs = [
+    SideMenu(),
     radio(),
     Tasbeeh(),
     ahades(),
@@ -31,14 +33,20 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-
+        drawer: SideMenu(),
         body: tabs[curr_index],
-
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: curr_index,
           selectedFontSize: 20,
           items:
           [
+
+            BottomNavigationBarItem(
+              backgroundColor: color,
+              title: Text('Settings'),
+              icon: Icon(Icons.settings,size: 40),
+            ),
+
             BottomNavigationBarItem(
               backgroundColor: color,
               title: Text('radio'),
