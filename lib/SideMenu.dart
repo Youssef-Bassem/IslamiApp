@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SideMenu extends StatelessWidget {
+class SideMenu extends StatefulWidget {
+  @override
+  _SideMenuState createState() => _SideMenuState();
+}
+
+class _SideMenuState extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -12,35 +17,54 @@ class SideMenu extends StatelessWidget {
           children: [
             InkWell(
               onTap: (){
-
+                changeTheme();
               },
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child:Text("Language",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold
-                  ),
-                ),
-              ),
+              child: myContainer("Theme"),
             ),
             InkWell(
               onTap: (){
-
+                changeLanguage();
               },
-              child:Container(
-                padding: EdgeInsets.symmetric(vertical: 12),
-                child:Text("Theme",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold
-                  ),
-                ),
-              ),
+              child:myContainer("Language"),
             ),
           ],
         ),
       ),
     );
+  }
+  Container myContainer(String itemName){
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 12),
+      child:Text(itemName,
+        style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold
+        ),
+      ),
+    );
+  }
+  void changeTheme(){
+    showModalBottomSheet(context: context, builder: (builderContext){
+      return Container(
+        child:Column(
+          children: [
+            myContainer("Dark theme"),
+            myContainer("Light theme"),
+          ],
+        ),
+      );
+    });
+  }
+  void changeLanguage(){
+    showModalBottomSheet(context: context, builder: (builderContext){
+      return Container(
+        child:Column(
+          children: [
+            myContainer("English"),
+            myContainer("العربية"),
+          ],
+        ),
+      );
+    });
   }
 }
