@@ -36,6 +36,7 @@ class _SideMenuState extends State<SideMenu> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12),
       child:Text(itemName,
+        textAlign: TextAlign.center,
         style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold
@@ -47,9 +48,18 @@ class _SideMenuState extends State<SideMenu> {
     showModalBottomSheet(context: context, builder: (builderContext){
       return Container(
         child:Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            myContainer("Dark theme"),
-            myContainer("Light theme"),
+            InkWell(
+                onTap: (){
+                },
+                child:myContainer("Dark theme")
+            ),
+            InkWell(
+                onTap: (){
+                },
+                child: myContainer("Light theme")
+            ),
           ],
         ),
       );
@@ -59,9 +69,18 @@ class _SideMenuState extends State<SideMenu> {
     showModalBottomSheet(context: context, builder: (builderContext){
       return Container(
         child:Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            myContainer("English"),
-            myContainer("العربية"),
+            InkWell(
+                onTap: (){
+                },
+                child: myContainer("English")
+            ),
+            InkWell(
+                onTap: (){
+                },
+                child: myContainer("العربية")
+            ),
           ],
         ),
       );
