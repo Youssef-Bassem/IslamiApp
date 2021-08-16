@@ -16,7 +16,12 @@ class SideMenu extends StatelessWidget {
               },
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 12),
-                child:Text("Language"),
+                child:Text("Language",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
               ),
             ),
             InkWell(
@@ -25,7 +30,12 @@ class SideMenu extends StatelessWidget {
               },
               child:Container(
                 padding: EdgeInsets.symmetric(vertical: 12),
-                child:Text("Theme"),
+                child:Text("Theme",
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
               ),
             ),
           ],
