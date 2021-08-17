@@ -14,8 +14,14 @@ class _SideMenuState extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppProvider>(context);
-    return Drawer(
-      child:Container(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
+        centerTitle: true,
+      ),
+
+      body: Container(
+        width: double.infinity,
         padding: EdgeInsets.symmetric(vertical: 48,horizontal: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -53,17 +59,24 @@ class _SideMenuState extends State<SideMenu> {
     showModalBottomSheet(context: context, builder: (builderContext){
       return Container(
         child:Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             InkWell(
-                onTap: (){
-                },
-                child:myContainer("Dark theme")
+              onTap: (){
+                if(!provider.isDarkModeEnabled())
+                {
+                  provider.changeTheme();
+                }
+              },
+              child: myContainer("Dark theme"),
             ),
             InkWell(
-                onTap: (){
-                },
-                child: myContainer("Light theme")
+              onTap: (){
+                if(provider.isDarkModeEnabled())
+                {
+                  provider.changeTheme();
+                }
+              },
+              child:myContainer("Light theme"),
             ),
           ],
         ),

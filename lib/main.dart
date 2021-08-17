@@ -7,6 +7,7 @@ import 'package:task4_training/Sowar.dart';
 import 'package:task4_training/Tasbeeh.dart';
 import 'package:task4_training/Radio.dart';
 import 'package:task4_training/l10n/l10n.dart';
+import 'ThemeData.dart';
 import 'suracontent.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'appprovider.dart';
@@ -22,9 +23,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  int curr_index = 3;
-  static const color = const Color(0xFFb7935f);
-
+  //late AppConfigProvider provider;
+  int curr_index = 4;
+  static const lightcolor = const Color(0xFFb7935f);
+  static const darkcolor = const Color(0xFF083668);
   final tabs = [
     SideMenu(),
     radio(),
@@ -35,10 +37,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(create: (BuildContext)=>AppProvider(),
-      builder: ( BuildContext , widget   ){
-      final provider = Provider.of<AppProvider>(BuildContext );
+
+    //provider = Provider.of<AppConfigProvider>(context);
+
+    return ChangeNotifierProvider(
+      create: (buildContext){
+        return AppProvider();
+      },
+      builder: (buildContext, widget){
+        final provider = Provider.of<AppProvider>(buildContext);
         return MaterialApp(
+          themeMode: provider.themeMode,
+          theme: Theme_Data.Light_Theme,
+          darkTheme: Theme_Data.Dark_Theme,
           debugShowCheckedModeBanner: false,
           home: Scaffold(
             drawer: SideMenu(),
@@ -46,36 +57,43 @@ class _MyAppState extends State<MyApp> {
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: curr_index,
               selectedFontSize: 20,
+              backgroundColor: Colors.white,
               items:
               [
+
                 BottomNavigationBarItem(
-                  backgroundColor: color,
-                  title: Text("setting"),
+                  title: Text('Settings'),
                   icon: Icon(Icons.settings,size: 40),
+                  backgroundColor: (provider.isDarkModeEnabled()) ?
+                  darkcolor : lightcolor,
                 ),
 
                 BottomNavigationBarItem(
-                  backgroundColor: color,
                   title: Text('radio'),
-                  icon: Image.asset('assets/radio.png',height: 40,width: 40,),
+                  icon: Image.asset('assets/radio.png',height: 40,width: 40),
+                  backgroundColor: (provider.isDarkModeEnabled()) ?
+                  darkcolor : lightcolor,
                 ),
 
                 BottomNavigationBarItem(
-                  backgroundColor: color,
                   title: Text('tasbeh'),
                   icon: Image.asset('assets/sebha.png',height: 40,width: 40,),
+                  backgroundColor: (provider.isDarkModeEnabled()) ?
+                  darkcolor : lightcolor,
                 ),
 
                 BottomNavigationBarItem(
-                  backgroundColor: color,
                   title: Text('ahades'),
                   icon: Image.asset('assets/ahades.png',height: 40,width: 40,),
+                  backgroundColor: (provider.isDarkModeEnabled()) ?
+                  darkcolor : lightcolor,
                 ),
 
                 BottomNavigationBarItem(
-                  backgroundColor: color,
                   title: Text('quraan'),
                   icon: Image.asset('assets/quraan.png',height: 40,width: 40,),
+                  backgroundColor: (provider.isDarkModeEnabled()) ?
+                  darkcolor : lightcolor,
                 )
               ],
               onTap: (index)
@@ -97,5 +115,6 @@ class _MyAppState extends State<MyApp> {
         );
       },
     );
+
   }
 }
