@@ -32,13 +32,14 @@ class _TasbeehState extends State<Tasbeeh> {
     return Scaffold(
       body: SafeArea(
         child:Container(
+          //margin: EdgeInsets.all(3),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
                   provider.isDarkModeEnabled()?
                   "assets/bg.png" : "assets/ahades1.png"
               ),
-              fit: BoxFit.cover,
+              fit: BoxFit.fill,
             ),
           ),
           child: Center(

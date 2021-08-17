@@ -13,7 +13,7 @@ class Quran extends StatelessWidget {
     return  Scaffold(
       body: SafeArea(
         child: Container(
-          margin: EdgeInsets.all(3),
+          //margin: EdgeInsets.all(3),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
@@ -26,10 +26,24 @@ class Quran extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Expanded(child: Padding(
-                padding: const EdgeInsets.only(top: 200.0),
-                child: Text('اسم السورة', style: TextStyle(fontSize: 40.0,fontWeight: FontWeight.bold,color: Colors.black54),),
-              )) ,
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 22, 20, 0),
+                child: Center(child:Text(
+                  'إسلامي',
+                  style: TextStyle(
+                      fontSize: 34,
+                      fontWeight: FontWeight.bold
+                  ),
+                )),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                child: Image(
+                  image: AssetImage('assets/sowarLogo.png'),
+                  width: 150,
+                ),
+              ),
+              Text('اسم السورة', style: TextStyle(fontSize: 40.0,fontWeight: FontWeight.bold),),
               Expanded(
                 child: ListView(
                   padding: const EdgeInsets.all(8),

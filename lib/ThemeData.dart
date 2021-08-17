@@ -68,7 +68,7 @@ class Theme_Data
           button: TextStyle(
               color: Colors.white
           )
-      )
+      ),
   );
 
 }
