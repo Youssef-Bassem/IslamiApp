@@ -11,6 +11,7 @@ class Theme_Data
       brightness: Brightness.light,
       primaryColorDark: Colors.black,
       canvasColor: Colors.white,
+      accentColor: Colors.black,
       // next line is important!
       //appBarTheme: AppBarTheme(brightness: Brightness.light)),
       appBarTheme: AppBarTheme(
@@ -23,6 +24,11 @@ class Theme_Data
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(lightcolor),
+            textStyle: MaterialStateProperty.all(
+                TextStyle(
+                    color: Colors.black
+                )
+            ),
           )
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -30,11 +36,6 @@ class Theme_Data
             backgroundColor: MaterialStateProperty.all(lightcolor),
           )
       ),
-      primaryTextTheme: TextTheme(
-          button: TextStyle(
-              color: Colors.black
-          )
-      )
   );
 
   static final Dark_Theme = ThemeData(
@@ -45,6 +46,7 @@ class Theme_Data
       primaryColorDark: Colors.black,
       indicatorColor: Colors.white,
       canvasColor: Colors.black,
+    accentColor: Colors.white,
       // next line is important!
       //appBarTheme: AppBarTheme(brightness: Brightness.dark)),
       appBarTheme: AppBarTheme(
@@ -57,16 +59,16 @@ class Theme_Data
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(darkcolor),
+            textStyle: MaterialStateProperty.all(
+                TextStyle(
+                  color: Colors.white
+                )
+            ),
           )
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.amber),
-          )
-      ),
-      primaryTextTheme: TextTheme(
-          button: TextStyle(
-              color: Colors.white
           )
       ),
   );
