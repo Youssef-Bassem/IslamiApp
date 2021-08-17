@@ -46,15 +46,15 @@ class SuracontentState extends State<Suracontent> {
     provider = Provider.of<AppProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Container(
             child:Text(
               'إسلامي' ,
               style: TextStyle(
                 fontSize: 32,
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold,
               ),
             ),
-          margin: EdgeInsets.only(left : 90),
         ),
         iconTheme: IconThemeData(color: Colors.black),
         backgroundColor: Colors.transparent,
@@ -89,7 +89,7 @@ class SuracontentState extends State<Suracontent> {
                     padding: EdgeInsets.all(10),
                     color: Colors.transparent,
                     child: SingleChildScrollView(
-                        child: Text(data , style: TextStyle(fontSize: 24 ,),textDirection: TextDirection.rtl,)) ),
+                        child: Text(data , style: TextStyle(fontSize: 24 ),textDirection: TextDirection.rtl,)) ),
               ),
             ],
           ),
