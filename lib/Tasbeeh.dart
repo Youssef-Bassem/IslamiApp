@@ -1,9 +1,11 @@
 //Youssef Bassem
+
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:task4_training/appprovider.dart';
 
 const myColor = const Color(0xFFb7935f);
 int tasbeehCounter = 0;
@@ -17,8 +19,16 @@ class Tasbeeh extends StatefulWidget {
 }
 
 class _TasbeehState extends State<Tasbeeh> {
+
+  late AppProvider provider;
+  static const lightcolor = const Color(0xFFb7935f);
+  static const darkcolor = const Color(0xFF083668);
+
   @override
   Widget build(BuildContext context) {
+
+    provider = Provider.of<AppProvider>(context);
+
     return Scaffold(
       body: SafeArea(
         child:Container(
@@ -32,7 +42,7 @@ class _TasbeehState extends State<Tasbeeh> {
             child: Column(
               children: <Widget>[
                 Text(
-                  'اسلامي',
+                  'إسلامي',
                   style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold
@@ -70,11 +80,12 @@ class _TasbeehState extends State<Tasbeeh> {
                   child:Text(
                     tasbeehCounter.toString(),
                     style: TextStyle(
-                      color: Colors.black,
+                      color: (provider.isDarkModeEnabled()) ?
+                      Colors.white : Colors.black,
                     ),
                   ),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(myColor),
+                    //backgroundColor: MaterialStateProperty.all(myColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
@@ -86,12 +97,13 @@ class _TasbeehState extends State<Tasbeeh> {
                   child: Text(
                     tasbeehat[index],
                     style: TextStyle(
-                      color: Colors.white,
+                      color: (provider.isDarkModeEnabled()) ?
+                      Colors.black : Colors.white,
                       fontSize: 20,
                     ),
                   ),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(myColor),
+                    //backgroundColor: MaterialStateProperty.all(myColor),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(18.0),
@@ -112,11 +124,11 @@ class _TasbeehState extends State<Tasbeeh> {
     );
   }
   rotate() async {
-      await Future.delayed(Duration(milliseconds: 5), () {
-        setState(() {
-          angle += 0.1;
-        });
+    await Future.delayed(Duration(milliseconds: 5), () {
+      setState(() {
+        angle += 0.1;
       });
+    });
   }
   void increaseTasbeehCounter(){
     rotate();
