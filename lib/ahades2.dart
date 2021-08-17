@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:provider/provider.dart';
+
+import 'appprovider.dart';
 
 class Suracontent extends StatefulWidget {
 
@@ -14,6 +17,7 @@ class Suracontent extends StatefulWidget {
 
 class SuracontentState extends State<Suracontent> {
 
+  late AppProvider provider;
   String data='';
 
   fetchFileData() async{
@@ -39,7 +43,7 @@ class SuracontentState extends State<Suracontent> {
   }
 
   Widget build(BuildContext context) {
-
+    provider = Provider.of<AppProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -62,7 +66,10 @@ class SuracontentState extends State<Suracontent> {
         margin: EdgeInsets.all(3),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/ahades1.png'),
+            image: AssetImage(
+                provider.isDarkModeEnabled()?
+                "assets/bg.png" : "assets/ahades1.png"
+            ),
             fit: BoxFit.fill,
           ),
         ),

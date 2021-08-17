@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:io';
-import 'dart:async';
-import 'dart:convert';
-
+import 'package:provider/provider.dart';
 import 'ahades2.dart';
+import 'appprovider.dart';
 
 
 class ahades extends StatefulWidget {
@@ -14,9 +11,10 @@ class ahades extends StatefulWidget {
 }
 String path='assets/';
 class _ahadesState extends State<ahades> {
-
+  late AppProvider provider;
   @override
   Widget build(BuildContext context) {
+    provider = Provider.of<AppProvider>(context);
     return Scaffold(
         body: Stack(
           children: <Widget>[
@@ -24,8 +22,11 @@ class _ahadesState extends State<ahades> {
               margin: EdgeInsets.all(3),
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/ahades1.png'),
                   fit: BoxFit.fill,
+                  image: AssetImage(
+                      provider.isDarkModeEnabled()?
+                      "assets/bg.png" : "assets/ahades1.png",
+                  ),
                 ),
               ),
             ),

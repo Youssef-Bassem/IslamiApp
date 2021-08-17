@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'appprovider.dart';
 import 'suracontent.dart';
 
 class Quran extends StatelessWidget {
+  late AppProvider provider;
   @override
   Widget build(BuildContext context) {
-
+    provider = Provider.of<AppProvider>(context);
     String path='Quran/';
 
     return  Scaffold(
@@ -13,7 +16,10 @@ class Quran extends StatelessWidget {
           margin: EdgeInsets.all(3),
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/ahades1.png'),
+              image: AssetImage(
+                  provider.isDarkModeEnabled()?
+                  "assets/bg.png" : "assets/ahades1.png"
+              ),
               fit: BoxFit.fill,
             ),
           ),

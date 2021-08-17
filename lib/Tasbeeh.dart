@@ -34,7 +34,10 @@ class _TasbeehState extends State<Tasbeeh> {
         child:Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/ahades1.png"),
+              image: AssetImage(
+                  provider.isDarkModeEnabled()?
+                  "assets/bg.png" : "assets/ahades1.png"
+              ),
               fit: BoxFit.cover,
             ),
           ),
