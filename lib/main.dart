@@ -27,6 +27,8 @@ class _MyAppState extends State<MyApp> {
   int curr_index = 4;
   static const lightcolor = const Color(0xFFb7935f);
   static const darkcolor = const Color(0xFF083668);
+  static const darkIconColor = const Color(0xFFF4C12F);
+
   final tabs = [
     SideMenu(),
     radio(),
@@ -63,7 +65,7 @@ class _MyAppState extends State<MyApp> {
 
                 BottomNavigationBarItem(
                   title: Text('Settings'),
-                  icon: Icon(Icons.settings,size: 40),
+                  icon:Icon(Icons.settings,size: 40,color: Colors.white,),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
                 ),
