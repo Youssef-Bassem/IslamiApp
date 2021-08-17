@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:provider/provider.dart';
+
+import 'appprovider.dart';
 
 class Suracontent extends StatefulWidget {
 
@@ -13,6 +16,7 @@ class Suracontent extends StatefulWidget {
 
 class SuracontentState extends State<Suracontent> {
 
+  late AppProvider provider;
   String data='';
 
   fetchFileData() async{
@@ -40,14 +44,18 @@ class SuracontentState extends State<Suracontent> {
   }
 
   Widget build(BuildContext context) {
+    provider = Provider.of<AppProvider>(context);
 
     return Scaffold(
       body:  SafeArea(
         child: Container(
-          margin: EdgeInsets.all(3),
+          //margin: EdgeInsets.all(3),
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/ahades1.png'),
+              image: AssetImage(
+                  provider.isDarkModeEnabled()?
+                  "assets/bg.png" : "assets/ahades1.png"
+              ),
               fit: BoxFit.fill,
             ),
           ),
@@ -57,13 +65,15 @@ class SuracontentState extends State<Suracontent> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top: 150.0),
-                child: Text( 'سورة '+ widget.suraname , style: TextStyle(fontSize: 30.0 ,color: Colors.black54),),
+                child: Text( 'سورة '+ widget.suraname , style: TextStyle(fontSize: 30.0 ),),
               ),
             ),
             Expanded(
               flex: 2,
               child: Container(
-                  color: Colors.white,
+                margin: EdgeInsets.all(10),
+                padding: EdgeInsets.all(10),
+                  color: Colors.transparent,
                   child: SingleChildScrollView(
                       child: Text(data , style: TextStyle(fontSize: 20 ,),textDirection: TextDirection.rtl,)) ),
             ),

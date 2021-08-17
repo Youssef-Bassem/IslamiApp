@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:provider/provider.dart';
+
+import 'appprovider.dart';
 
 class Suracontent extends StatefulWidget {
 
@@ -14,6 +17,7 @@ class Suracontent extends StatefulWidget {
 
 class SuracontentState extends State<Suracontent> {
 
+  late AppProvider provider;
   String data='';
 
   fetchFileData() async{
@@ -39,7 +43,7 @@ class SuracontentState extends State<Suracontent> {
   }
 
   Widget build(BuildContext context) {
-
+    provider = Provider.of<AppProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: Container(
@@ -47,7 +51,6 @@ class SuracontentState extends State<Suracontent> {
               'إسلامي' ,
               style: TextStyle(
                 fontSize: 32,
-                color: Colors.black,
                 fontWeight: FontWeight.bold
               ),
             ),
@@ -62,7 +65,10 @@ class SuracontentState extends State<Suracontent> {
         margin: EdgeInsets.all(3),
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/ahades1.png'),
+            image: AssetImage(
+                provider.isDarkModeEnabled()?
+                "assets/bg.png" : "assets/ahades1.png"
+            ),
             fit: BoxFit.fill,
           ),
         ),
@@ -74,13 +80,14 @@ class SuracontentState extends State<Suracontent> {
               Container(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 90.0, bottom: 0),
-                  child: Text( widget.suraname , style: TextStyle(fontSize: 30.0 ,color: Colors.black,fontWeight: FontWeight.bold),),
+                  child: Text( widget.suraname , style: TextStyle(fontSize: 30.0 ,fontWeight: FontWeight.bold),),
                 ),
               ),
               Expanded(
                 child: Container(
-                    margin: EdgeInsets.all(20),
-                    color: Colors.white54,
+                    margin: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(10),
+                    color: Colors.transparent,
                     child: SingleChildScrollView(
                         child: Text(data , style: TextStyle(fontSize: 24 ,),textDirection: TextDirection.rtl,)) ),
               ),
