@@ -58,7 +58,9 @@ class _TasbeehState extends State<Tasbeeh> {
                     Container(
                       margin: EdgeInsets.fromLTRB(50,0,0,0),
                       alignment: AlignmentDirectional.topCenter,
-                      child: Image.asset("assets/head.png"),
+                      child: Image.asset(provider.isDarkModeEnabled()?
+                      "assets/head of seb7a.png" : "assets/head.png"
+                      ),
                     ),
                     Container(
                       // ignore: deprecated_member_use
@@ -67,7 +69,9 @@ class _TasbeehState extends State<Tasbeeh> {
                         onPressed: (){increaseTasbeehCounter();},
                         child: Transform.rotate(
                           angle: angle,
-                          child: Image.asset("assets/body.png"),
+                          child: Image.asset(provider.isDarkModeEnabled()?
+                          "assets/body of seb7a.png" : "assets/body.png"
+                          ),
                         ),
                       ),
                     ),
