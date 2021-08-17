@@ -8,7 +8,6 @@ class radio extends StatelessWidget {
       body: Center(
         child: Text('Radio',style: TextStyle(fontWeight: FontWeight.bold , fontSize: 40),),
       ),
-
     );
   }
 }
