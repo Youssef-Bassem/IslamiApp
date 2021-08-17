@@ -87,8 +87,7 @@ class SuracontentState extends State<Suracontent> {
                 child: Container(
                     margin: EdgeInsets.all(10),
                     padding: EdgeInsets.all(10),
-                    color: provider.isDarkModeEnabled()?
-                    Colors.black : Colors.white,
+                    color: Colors.transparent,
                     child: SingleChildScrollView(
                         child: Text(data , style: TextStyle(fontSize: 24 ,),textDirection: TextDirection.rtl,)) ),
               ),
