@@ -30,5 +30,4 @@ class AppProvider extends ChangeNotifier {
     currentLanguage=Language;
     notifyListeners();
   }
-
 }
