@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:task4_training/appprovider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const myColor = const Color(0xFFb7935f);
 int tasbeehCounter = 0;
@@ -46,7 +47,7 @@ class _TasbeehState extends State<Tasbeeh> {
             child: Column(
               children: <Widget>[
                 Text(
-                  'إسلامي',
+                  AppLocalizations.of(context)!.appTitle,
                   style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold
