@@ -68,6 +68,11 @@ class _MyAppState extends State<MyApp> {
                   icon:Icon(Icons.settings,size: 40,color: Colors.white,),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
+                  activeIcon: new Icon(
+                      Icons.settings,
+                      size:40,
+                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.white
+                  ),
                 ),
 
                 BottomNavigationBarItem(
@@ -75,6 +80,12 @@ class _MyAppState extends State<MyApp> {
                   icon: Image.asset('assets/radio.png',height: 40,width: 40),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
+                  activeIcon: new Image.asset(
+                      'assets/radio.png',
+                      height:40,
+                      width: 40,
+                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.white
+                  ),
                 ),
 
                 BottomNavigationBarItem(
@@ -82,6 +93,12 @@ class _MyAppState extends State<MyApp> {
                   icon: Image.asset('assets/sebha.png',height: 40,width: 40,),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
+                  activeIcon: new Image.asset(
+                      'assets/sebha.png',
+                      height:40,
+                      width: 40,
+                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.white
+                  ),
                 ),
 
                 BottomNavigationBarItem(
@@ -89,6 +106,12 @@ class _MyAppState extends State<MyApp> {
                   icon: Image.asset('assets/ahades.png',height: 40,width: 40,),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
+                  activeIcon: new Image.asset(
+                      'assets/ahades.png',
+                      height:40,
+                      width: 40,
+                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.white
+                  ),
                 ),
 
                 BottomNavigationBarItem(
@@ -96,6 +119,12 @@ class _MyAppState extends State<MyApp> {
                   icon: Image.asset('assets/quraan.png',height: 40,width: 40,),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
+                  activeIcon: new Image.asset(
+                      'assets/quraan.png',
+                      height:40,
+                      width: 40,
+                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.white
+                  ),
                 )
               ],
               onTap: (index)
