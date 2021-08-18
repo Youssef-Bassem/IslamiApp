@@ -17,10 +17,16 @@ class _SideMenuState extends State<SideMenu> {
   Widget build(BuildContext context) {
     provider = Provider.of<AppProvider>(context);
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Settings'),
-      //   centerTitle: true,
-      // ),
+      appBar: AppBar(
+        title: Text(
+          'Settings',
+          style: TextStyle(
+            fontStyle: FontStyle.italic,
+            color: Colors.white,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: Container(
         child: Container(
           decoration: BoxDecoration(
@@ -35,31 +41,20 @@ class _SideMenuState extends State<SideMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Text(
-                  "Settings",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
                 SizedBox(
-                  height: 60,
+                  height: 100,
                 ),
                 InkWell(
                   onTap: () {
                     changeTheme();
                   },
-                  child: myContainer("Theme"),
-                ),
-                SizedBox(
-                  height: 10,
+                  child: myRow("Theme",Icons.add_to_photos_outlined),
                 ),
                 InkWell(
                   onTap: () {
                     changeLanguage();
                   },
-                  child: myContainer("Language"),
+                  child: myRow("Language",Icons.language),
                 ),
               ],
             ),
@@ -69,19 +64,27 @@ class _SideMenuState extends State<SideMenu> {
     );
   }
 
-  Center myContainer(String itemName) {
-    return Center(
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 12),
-        child: Text(
-          itemName,
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
-        ),
-      ),
+  Row myRow(String itemName,IconData myIcon) {
+    return Row(
+      children: [
+        Icon(myIcon),
+        SizedBox(width: 20,),
+        myContainer(itemName),
+      ],
     );
   }
 
+  Container myContainer(String itemName)
+  {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 12),
+      child: Text(
+        itemName,
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+      ),
+    );
+  }
   void changeTheme() {
     showModalBottomSheet(
         context: context,
