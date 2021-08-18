@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 import 'appprovider.dart';
 
@@ -38,7 +36,6 @@ class SuracontentState extends State<Suracontent> {
     });
   }
 
-
   @override
   void initState() {
     fetchFileData();
@@ -52,7 +49,7 @@ class SuracontentState extends State<Suracontent> {
         centerTitle: true,
         title: Container(
             child:Text(
-              AppLocalizations.of(context)!.appTitle ,
+              'إسلامي' ,
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'appprovider.dart';
 
@@ -48,22 +47,7 @@ class SuracontentState extends State<Suracontent> {
     provider = Provider.of<AppProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Container(
-          child:Text(
-            AppLocalizations.of(context)!.appTitle ,
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        iconTheme: IconThemeData(color: Colors.black),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-      ),
-      extendBodyBehindAppBar: true,
+
       body:  SafeArea(
         child: Container(
           //margin: EdgeInsets.all(3),
