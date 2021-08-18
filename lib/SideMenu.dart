@@ -17,16 +17,6 @@ class _SideMenuState extends State<SideMenu> {
   Widget build(BuildContext context) {
     provider = Provider.of<AppProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Settings',
-          style: TextStyle(
-            fontStyle: FontStyle.italic,
-            color: Colors.white,
-          ),
-        ),
-        centerTitle: true,
-      ),
       body: Container(
         child: Container(
           decoration: BoxDecoration(
@@ -41,6 +31,12 @@ class _SideMenuState extends State<SideMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                Center(
+                  child: Text(
+                    AppLocalizations.of(context)!.settings,
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  ),
+                ),
                 SizedBox(
                   height: 100,
                 ),
