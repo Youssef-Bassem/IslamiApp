@@ -47,6 +47,7 @@ class SuracontentState extends State<Suracontent> {
     provider = Provider.of<AppProvider>(context);
 
     return Scaffold(
+
       body:  SafeArea(
         child: Container(
           //margin: EdgeInsets.all(3),
@@ -61,11 +62,12 @@ class SuracontentState extends State<Suracontent> {
           ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top: 150.0),
-                child: Text( 'سورة '+ widget.suraname , style: TextStyle(fontSize: 30.0 ),),
+                child: Center(child: Text( 'سورة '+ widget.suraname , style: TextStyle(fontSize: 20.0 ),)),
               ),
             ),
             Expanded(
@@ -73,10 +75,9 @@ class SuracontentState extends State<Suracontent> {
               child: Container(
                 margin: EdgeInsets.all(10),
                 padding: EdgeInsets.all(10),
-                  color: Colors.transparent,
-                  child: SingleChildScrollView(
-                      child: Text(data , style: TextStyle(fontSize: 20 ,),textDirection: TextDirection.rtl,)) ),
-            ),
+                  color: Colors.white,
+                child: SingleChildScrollView(child: Text(data , style: TextStyle(fontSize: 20 ,),textDirection: TextDirection.rtl,))),
+              ),
           ],
         ),
         ),
