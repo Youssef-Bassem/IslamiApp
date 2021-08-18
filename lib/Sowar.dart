@@ -20,7 +20,6 @@ class Quran extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Container(
-          //margin: EdgeInsets.all(3),
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(provider.isDarkModeEnabled()
@@ -33,12 +32,12 @@ class Quran extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.fromLTRB(0, 22, 20, 0),
                 child: Center(
-                    child: Text(
-                  AppLocalizations.of(context)!.appTitle,
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                )),
+                  child: Text(
+                    AppLocalizations.of(context)!.appTitle,
+                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                  ),
+                ),
               ),
               Container(
                 margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
@@ -56,15 +55,22 @@ class Quran extends StatelessWidget {
                 itemCount: sorafile.Sowar.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: FlatButton(
-                      child: Text(
-                        sorafile.Sowar[index],
-                        style: TextStyle(fontSize: 20.0, color: Colors.black),
-                      ),
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Suracontent(suraname : sorafile.Sowar[index] , path :path+'1.txt')));
-                      }
-                    ),
+                    title: MaterialButton(
+                        child: Text(
+                          sorafile.Sowar[index],
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: (provider.isDarkModeEnabled()) ? Colors.white : Colors.black,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Suracontent(
+                                      suraname: sorafile.Sowar[index],
+                                      path: path + '1.txt')));
+                        }),
                   );
                 },
               )),
