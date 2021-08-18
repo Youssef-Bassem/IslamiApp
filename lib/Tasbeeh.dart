@@ -79,7 +79,7 @@ class _TasbeehState extends State<Tasbeeh> {
                   ],
                 ),
                 Text(
-                  'عدد التسبيحات',
+                  AppLocalizations.of(context)!.tasbeeh,
                   style: TextStyle(
                       fontSize: 25
                   ),
