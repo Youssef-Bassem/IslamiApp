@@ -7,7 +7,8 @@ import 'Appprovider.dart';
 class Suracontent extends StatefulWidget {
   final String suraname;
   final String path;
-  const Suracontent({required this.suraname, required this.path});
+  final int soranum;
+  const Suracontent({required this.suraname, required this.path , required this.soranum});
 
   @override
   SuracontentState createState() => SuracontentState();
@@ -16,10 +17,10 @@ class Suracontent extends StatefulWidget {
 class SuracontentState extends State<Suracontent> {
   late AppProvider provider;
   String data = '';
-
   fetchFileData() async {
     String resp;
-    resp = await rootBundle.loadString(widget.path);
+    int num = widget.soranum;
+    resp = await rootBundle.loadString(widget.path+'$num'+'.txt');
     List<String> items = resp.split('\n');
     resp = "";
     for (int i = 0; i < items.length; i++) {
@@ -93,15 +94,19 @@ class SuracontentState extends State<Suracontent> {
               Expanded(
                 flex: 2,
                 child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xFFF3F3F3),
+                    borderRadius: BorderRadius.all(Radius.circular(10),),
+                  ),
                   margin: EdgeInsets.all(10),
                   padding: EdgeInsets.all(10),
-                  color: Colors.white,
                   child: SingleChildScrollView(
                     child: Text(
                       data,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontFamily: 'Lateef',
+                        fontSize: 23,
                       ),
                       textDirection: TextDirection.rtl,
                     ),

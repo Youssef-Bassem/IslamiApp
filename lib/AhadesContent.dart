@@ -5,22 +5,23 @@ import 'package:provider/provider.dart';
 import 'Appprovider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class Suracontent extends StatefulWidget {
-  final String suraname;
+class AhadethContent extends StatefulWidget {
+  final String hadethname;
   final String path;
-  const Suracontent({required this.suraname, required this.path});
+  final int hadethnum;
+  const AhadethContent({required this.hadethname, required this.path,required this.hadethnum});
 
   @override
-  SuracontentState createState() => SuracontentState();
+  AhadethContentState createState() => AhadethContentState();
 }
 
-class SuracontentState extends State<Suracontent> {
+class AhadethContentState extends State<AhadethContent> {
   late AppProvider provider;
   String data = '';
-
   fetchFileData() async {
+    int num = widget.hadethnum;
     String resp;
-    resp = await rootBundle.loadString(widget.path);
+    resp = await rootBundle.loadString(widget.path+'$num'+'.txt');
     List<String> items = resp.split('\n');
     resp = "";
     for (int i = 0; i < items.length; i++) {
@@ -78,7 +79,7 @@ class SuracontentState extends State<Suracontent> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 90.0, bottom: 0),
                   child: Text(
-                    widget.suraname,
+                    widget.hadethname,
                     style:
                         TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
                   ),

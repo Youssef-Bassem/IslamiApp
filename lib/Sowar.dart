@@ -87,9 +87,9 @@ class Quran extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) => Suracontent(
                                   suraname: (provider.currentLanguage=='ar')?
-                                  sorafileAr.SowarArabicList[index++]:
-                                  sorafileEn.SowarEnglishList[index++],
-                                  path: path + '$index.txt'),
+                                  sorafileAr.SowarArabicList[index]:
+                                  sorafileEn.SowarEnglishList[index],
+                                  path: path , soranum: index+1,),
                             ),
                           );
                         },

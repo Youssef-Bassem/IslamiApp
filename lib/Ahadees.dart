@@ -98,11 +98,11 @@ class _ahadesState extends State<ahades> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Suracontent(
-                                    suraname: (provider.currentLanguage=='ar')?
-                                    ahadesfileAr.AhadesArabicList[index++]:
-                                    ahadesfileEn.AhadesEnglishList[index++],
-                                    path: path + '$index.txt'),
+                                builder: (context) => AhadethContent(
+                                    hadethname: (provider.currentLanguage=='ar')?
+                                    ahadesfileAr.AhadesArabicList[index]:
+                                    ahadesfileEn.AhadesEnglishList[index],
+                                    path: path , hadethnum: index +1 ,),
                               ),
                             );
                           },
@@ -120,26 +120,3 @@ class _ahadesState extends State<ahades> {
   }
 }
 
-TextButton MakeButton(String name, String filename, BuildContext context) {
-  final AppProvider provider = Provider.of<AppProvider>(context);
-  return TextButton(
-    style: ButtonStyle(
-      backgroundColor: MaterialStateProperty.all(Colors.transparent)
-    ),
-    child: Text(
-      name,
-      style: TextStyle(
-        fontSize: 20.0,
-        color: (provider.isDarkModeEnabled()) ? Colors.white : Colors.black,
-        fontWeight: FontWeight.bold,
-      ),
-    ),
-    onPressed: () {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  Suracontent(suraname: name, path: path + filename)));
-    },
-  );
-}
