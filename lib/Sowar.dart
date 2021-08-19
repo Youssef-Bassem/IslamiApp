@@ -8,6 +8,7 @@ import 'SowarFile.dart';
 
 class Quran extends StatelessWidget {
   static const lightcolor = const Color(0xFFb7935f);
+  static const darkIconColor = const Color(0xFFF4C12F);
   late AppProvider provider;
   final SuwarFile sorafile = SuwarFile();
   @override
@@ -48,7 +49,7 @@ class Quran extends StatelessWidget {
               SizedBox(height: 5,),
               Container(
                 height: 3,
-                color: lightcolor,
+                color: provider.isDarkModeEnabled()? darkIconColor : lightcolor,
                 margin: EdgeInsets.all(8),
               ),
               Text(
@@ -57,7 +58,7 @@ class Quran extends StatelessWidget {
               ),
               Container(
                 height: 3,
-                color: lightcolor,
+                color: provider.isDarkModeEnabled()? darkIconColor : lightcolor,
                 margin: EdgeInsets.all(8),
               ),
               Expanded(
