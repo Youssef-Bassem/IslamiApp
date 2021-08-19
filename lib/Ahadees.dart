@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'AhadesFile.dart';
 import 'SowarFileِArabic.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'appprovider.dart';
+import 'Appprovider.dart';
 
 class ahades extends StatefulWidget {
   @override

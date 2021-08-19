@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task4_training/SowarFileEnglish.dart';
-import 'appprovider.dart';
-import 'suracontent.dart';
+import 'Appprovider.dart';
+import 'SoraContent.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'SowarFileِArabic.dart';
 
@@ -87,8 +87,8 @@ class Quran extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) => Suracontent(
                                   suraname: (provider.currentLanguage=='ar')?
-                                  sorafileAr.SowarArabicList[index]:
-                                  sorafileEn.SowarEnglishList[index],
+                                  sorafileAr.SowarArabicList[index++]:
+                                  sorafileEn.SowarEnglishList[index++],
                                   path: path + '$index.txt'),
                             ),
                           );

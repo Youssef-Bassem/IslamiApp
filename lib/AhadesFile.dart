@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:provider/provider.dart';
-import 'appprovider.dart';
+import 'Appprovider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Suracontent extends StatefulWidget {

@@ -10,7 +10,7 @@ import 'package:task4_training/UserPreferences.dart';
 import 'package:task4_training/l10n/l10n.dart';
 import 'ThemeData.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'appprovider.dart';
+import 'Appprovider.dart';
 import 'UserPreferences.dart';
 
 Future main() async {
