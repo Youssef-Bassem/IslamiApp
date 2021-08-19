@@ -13,7 +13,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'appprovider.dart';
 import 'UserPreferences.dart';
 
-Future main() async{
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await UserPreferences.init();
   runApp(MyApp());
@@ -25,8 +25,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  late AppProvider provider;
 
-  //late AppConfigProvider provider;
   int curr_index = 4;
   static const lightcolor = const Color(0xFFb7935f);
   static const darkcolor = const Color(0xFF083668);
@@ -42,13 +42,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-
     return ChangeNotifierProvider(
-      create: (buildContext){
+      create: (buildContext) {
         return AppProvider();
       },
-      builder: (buildContext, widget){
-        final provider = Provider.of<AppProvider>(buildContext);
+      builder: (buildContext, widget) {
+        provider = Provider.of<AppProvider>(buildContext);
         provider.themeMode = UserPreferences.getThemePreference();
         provider.currentLanguage = UserPreferences.getLanguage();
         return MaterialApp(
@@ -63,76 +62,30 @@ class _MyAppState extends State<MyApp> {
               currentIndex: curr_index,
               selectedFontSize: 20,
               backgroundColor: Colors.white,
-              selectedItemColor: provider.isDarkModeEnabled()? darkIconColor : Colors.black,
-              items:
-              [
-
+              selectedItemColor:
+                  provider.isDarkModeEnabled() ? darkIconColor : Colors.black,
+              items: [
                 BottomNavigationBarItem(
                   label: 'Settings',
-                  icon:Icon(Icons.settings,size: 40,color: Colors.white,),
-                  backgroundColor: (provider.isDarkModeEnabled()) ?
-                  darkcolor : lightcolor,
-                  activeIcon: new Icon(
-                      Icons.settings,
-                      size:40,
-                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.black
+                  icon: Icon(
+                    Icons.settings,
+                    size: 40,
+                    color: Colors.white,
                   ),
+                  backgroundColor:
+                      (provider.isDarkModeEnabled()) ? darkcolor : lightcolor,
+                  activeIcon: new Icon(Icons.settings,
+                      size: 40,
+                      color: provider.isDarkModeEnabled()
+                          ? darkIconColor
+                          : Colors.black),
                 ),
-
-                BottomNavigationBarItem(
-                  label: 'radio',
-                  icon: Image.asset('assets/radio.png',height: 40,width: 40),
-                  backgroundColor: (provider.isDarkModeEnabled()) ?
-                  darkcolor : lightcolor,
-                  activeIcon: new Image.asset(
-                      'assets/radio.png',
-                      height:40,
-                      width: 40,
-                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.black
-                  ),
-                ),
-
-                BottomNavigationBarItem(
-                  label: 'tasbeh',
-                  icon: Image.asset('assets/sebha.png',height: 40,width: 40,),
-                  backgroundColor: (provider.isDarkModeEnabled()) ?
-                  darkcolor : lightcolor,
-                  activeIcon: new Image.asset(
-                      'assets/sebha.png',
-                      height:40,
-                      width: 40,
-                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.black
-                  ),
-                ),
-
-                BottomNavigationBarItem(
-                  label: 'ahades',
-                  icon: Image.asset('assets/ahades.png',height: 40,width: 40,),
-                  backgroundColor: (provider.isDarkModeEnabled()) ?
-                  darkcolor : lightcolor,
-                  activeIcon: new Image.asset(
-                      'assets/ahades.png',
-                      height:40,
-                      width: 40,
-                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.black
-                  ),
-                ),
-
-                BottomNavigationBarItem(
-                  label: 'quraan',
-                  icon: Image.asset('assets/quraan.png',height: 40,width: 40,),
-                  backgroundColor: (provider.isDarkModeEnabled()) ?
-                  darkcolor : lightcolor,
-                  activeIcon: new Image.asset(
-                      'assets/quraan.png',
-                      height:40,
-                      width: 40,
-                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.black
-                  ),
-                )
+                myNavigationBarItem('Radio', 'assets/radio.png'),
+                myNavigationBarItem('Tasbeh', 'assets/sebha.png'),
+                myNavigationBarItem('Ahades', 'assets/ahades.png'),
+                myNavigationBarItem('Quraan', 'assets/quraan.png'),
               ],
-              onTap: (index)
-              {
+              onTap: (index) {
                 setState(() {
                   curr_index = index;
                 });
@@ -150,6 +103,21 @@ class _MyAppState extends State<MyApp> {
         );
       },
     );
+  }
 
+  BottomNavigationBarItem myNavigationBarItem(String iconLabel, String myIcon) {
+    return BottomNavigationBarItem(
+      label: iconLabel,
+      icon: Image.asset(
+        myIcon,
+        height: 40,
+        width: 40,
+      ),
+      backgroundColor: (provider.isDarkModeEnabled()) ? darkcolor : lightcolor,
+      activeIcon: new Image.asset(myIcon,
+          height: 40,
+          width: 40,
+          color: provider.isDarkModeEnabled() ? darkIconColor : Colors.black),
+    );
   }
 }
