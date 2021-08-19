@@ -43,7 +43,7 @@ class _radioState extends State<radio> {
                   ),
                 ),
               ),
-              SizedBox(height: 90,),
+              SizedBox(height: 50,),
               Container(
                 margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
                 child: Image(
