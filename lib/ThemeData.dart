@@ -12,12 +12,6 @@ class Theme_Data
       primaryColorDark: Colors.black,
       canvasColor: Colors.white,
       accentColor: Colors.black,
-      // next line is important!
-      //appBarTheme: AppBarTheme(brightness: Brightness.light)),
-      appBarTheme: AppBarTheme(
-          backgroundColor: lightcolor,
-          brightness: Brightness.light
-      ),
       scaffoldBackgroundColor: lightcolor,
       textSelectionColor: Colors.white,
 
@@ -48,10 +42,6 @@ class Theme_Data
       indicatorColor: Colors.white,
       canvasColor: Colors.black,
       accentColor: Colors.white,
-      appBarTheme: AppBarTheme(
-          backgroundColor: darkcolor,
-          brightness: Brightness.dark
-      ),
       scaffoldBackgroundColor: darkcolor,
       textSelectionColor: Colors.black,
 
