@@ -1,16 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task4_training/SowarFileEnglish.dart';
 import 'appprovider.dart';
 import 'suracontent.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'SowarFile.dart';
+import 'SowarFileِArabic.dart';
 
 class Quran extends StatelessWidget {
   static const lightcolor = const Color(0xFFb7935f);
   static const darkIconColor = const Color(0xFFF4C12F);
   late AppProvider provider;
-  final SuwarFile sorafile = SuwarFile();
+  final SuwarFileArabic sorafileAr = SuwarFileArabic();
+  final SuwarFileEnglish sorafileEn = SuwarFileEnglish();
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppProvider>(context);
@@ -63,12 +65,14 @@ class Quran extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: sorafile.Sowar.length,
+                  itemCount: sorafileAr.SowarArabicList.length,
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: MaterialButton(
                         child: Text(
-                          sorafile.Sowar[index],
+                          (provider.currentLanguage=='ar')?
+                          sorafileAr.SowarArabicList[index]:
+                              sorafileEn.SowarEnglishList[index],
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
@@ -82,7 +86,9 @@ class Quran extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => Suracontent(
-                                  suraname: sorafile.Sowar[index],
+                                  suraname: (provider.currentLanguage=='ar')?
+                                  sorafileAr.SowarArabicList[index]:
+                                  sorafileEn.SowarEnglishList[index],
                                   path: path + '1.txt'),
                             ),
                           );
