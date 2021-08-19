@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'AhadesFile.dart';
-import 'SowarFileِArabic.dart';
+import 'package:task4_training/AhadesFileArabic.dart';
+import 'package:task4_training/AhadesFileEnglish.dart';
+import 'AhadesContent.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'Appprovider.dart';
 
@@ -16,6 +17,10 @@ String path = 'assets/';
 class _ahadesState extends State<ahades> {
   static const lightcolor = const Color(0xFFb7935f);
   static const darkIconColor = const Color(0xFFF4C12F);
+
+  final AhadesFileArabic ahadesfileAr = AhadesFileArabic();
+  final AhadesFileEnglish ahadesfileEn = AhadesFileEnglish();
+
   late AppProvider provider;
 
   @override
@@ -72,110 +77,38 @@ class _ahadesState extends State<ahades> {
                   margin: EdgeInsets.all(8),
                 ),
                 Flexible(
-                  child: ListView(
-                    padding: const EdgeInsets.all(8),
-                    children: <Widget>[
-                      MakeButton(
-                          AppLocalizations.of(context)!.h1, '1.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h2, '2.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h3, '3.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h4, '4.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h5, '5.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h6, '6.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h7, '7.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h8, '8.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h9, '9.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h10, '10.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h11, '11.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h12, '12.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h13, '13.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h14, '14.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h15, '15.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h16, '16.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h17, '17.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h18, '18.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h19, '19.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h20, '20.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h21, '21.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h22, '22.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h23, '23.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h24, '24.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h25, '25.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h26, '26.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h27, '27.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h28, '28.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h29, '29.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h30, '30.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h31, '31.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h32, '32.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h33, '33.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h34, '34.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h35, '35.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h36, '36.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h37, '37.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h38, '38.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h39, '39.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h40, '40.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h41, '41.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h42, '42.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h43, '43.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h44, '44.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h45, '45.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h46, '46.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h47, '47.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h48, '48.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h49, '49.txt', context),
-                      MakeButton(
-                          AppLocalizations.of(context)!.h50, '50.txt', context),
-                    ],
+                  child: ListView.builder(
+                    itemCount: ahadesfileAr.AhadesArabicList.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: MaterialButton(
+                          child: Text(
+                            (provider.currentLanguage=='ar')?
+                            ahadesfileAr.AhadesArabicList[index]:
+                            ahadesfileEn.AhadesEnglishList[index],
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                              color: (provider.isDarkModeEnabled())
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Suracontent(
+                                    suraname: (provider.currentLanguage=='ar')?
+                                    ahadesfileAr.AhadesArabicList[index++]:
+                                    ahadesfileEn.AhadesEnglishList[index++],
+                                    path: path + '$index.txt'),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
