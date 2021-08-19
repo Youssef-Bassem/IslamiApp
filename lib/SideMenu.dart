@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:task4_training/ThemeData.dart';
 import 'appprovider.dart';
 
 class SideMenu extends StatefulWidget {
@@ -44,13 +43,13 @@ class _SideMenuState extends State<SideMenu> {
                   onTap: () {
                     changeTheme();
                   },
-                  child: myRow("Theme",Icons.add_to_photos_outlined),
+                  child: myRow(AppLocalizations.of(context)!.themes, Icons.add_to_photos_outlined),
                 ),
                 InkWell(
                   onTap: () {
                     changeLanguage();
                   },
-                  child: myRow("Language",Icons.language),
+                  child: myRow(AppLocalizations.of(context)!.language, Icons.language),
                 ),
               ],
             ),
@@ -60,18 +59,19 @@ class _SideMenuState extends State<SideMenu> {
     );
   }
 
-  Row myRow(String itemName,IconData myIcon) {
+  Row myRow(String itemName, IconData myIcon) {
     return Row(
       children: [
         Icon(myIcon),
-        SizedBox(width: 20,),
+        SizedBox(
+          width: 20,
+        ),
         myContainer(itemName),
       ],
     );
   }
 
-  Container myContainer(String itemName)
-  {
+  Container myContainer(String itemName) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 12),
       child: Text(
@@ -81,6 +81,7 @@ class _SideMenuState extends State<SideMenu> {
       ),
     );
   }
+
   void changeTheme() {
     showModalBottomSheet(
         context: context,
@@ -121,11 +122,12 @@ class _SideMenuState extends State<SideMenu> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 InkWell(
-                    onTap: () {
-                      provider.changeLanguage('en');
-                      Navigator.pop(context);
-                    },
-                    child: myContainer("English")),
+                  onTap: () {
+                    provider.changeLanguage('en');
+                    Navigator.pop(context);
+                  },
+                  child: myContainer("English"),
+                ),
                 InkWell(
                     onTap: () {
                       provider.changeLanguage('ar');

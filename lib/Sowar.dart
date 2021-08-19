@@ -1,9 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task4_training/Tasbeeh.dart';
 import 'appprovider.dart';
 import 'suracontent.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -56,23 +53,26 @@ class Quran extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: MaterialButton(
-                          child: Text(
-                            sorafile.Sowar[index],
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              color: (provider.isDarkModeEnabled())
-                                  ? Colors.white
-                                  : Colors.black,
-                            ),
+                        child: Text(
+                          sorafile.Sowar[index],
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: (provider.isDarkModeEnabled())
+                                ? Colors.white
+                                : Colors.black,
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Suracontent(
-                                        suraname: sorafile.Sowar[index],
-                                        path: path + '1.txt')));
-                          }),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Suracontent(
+                                  suraname: sorafile.Sowar[index],
+                                  path: path + '1.txt'),
+                            ),
+                          );
+                        },
+                      ),
                     );
                   },
                 ),
