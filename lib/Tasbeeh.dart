@@ -52,7 +52,7 @@ class _TasbeehState extends State<Tasbeeh> {
                   ),
                 ),
                 SizedBox(
-                  height: 60,
+                  height: 20,
                 ),
                 Stack(
                   children: [
@@ -68,9 +68,6 @@ class _TasbeehState extends State<Tasbeeh> {
                     Center(
                       child: Container(
                         padding: EdgeInsets.fromLTRB(10, 65, 0, 0),
-                        // onPressed: () {
-                        //   // increaseTasbeehCounter();
-                        // },
                         child: Transform.rotate(
                           angle: angle,
                           child: Image.asset(provider.isDarkModeEnabled()
@@ -82,7 +79,7 @@ class _TasbeehState extends State<Tasbeeh> {
                   ],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 Text(
                   AppLocalizations.of(context)!.tasbeh,
@@ -108,6 +105,7 @@ class _TasbeehState extends State<Tasbeeh> {
                     ),
                   ),
                 ),
+                SizedBox(height: 10,),
                 ElevatedButton(
                   child: Text(
                     tasbeehat[index],

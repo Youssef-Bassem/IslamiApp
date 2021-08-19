@@ -30,6 +30,7 @@ class _SideMenuState extends State<SideMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                SizedBox(height: 15,),
                 Center(
                   child: Text(
                     AppLocalizations.of(context)!.settings,
