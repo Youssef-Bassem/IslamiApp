@@ -18,9 +18,9 @@ class Theme_Data
           backgroundColor: lightcolor,
           brightness: Brightness.light
       ),
-
       scaffoldBackgroundColor: lightcolor,
       textSelectionColor: Colors.white,
+
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(lightcolor),
@@ -36,6 +36,7 @@ class Theme_Data
             backgroundColor: MaterialStateProperty.all(lightcolor),
           )
       ),
+
   );
 
   static final Dark_Theme = ThemeData(
@@ -46,16 +47,14 @@ class Theme_Data
       primaryColorDark: Colors.black,
       indicatorColor: Colors.white,
       canvasColor: Colors.black,
-    accentColor: Colors.white,
-      // next line is important!
-      //appBarTheme: AppBarTheme(brightness: Brightness.dark)),
+      accentColor: Colors.white,
       appBarTheme: AppBarTheme(
           backgroundColor: darkcolor,
           brightness: Brightness.dark
       ),
-
       scaffoldBackgroundColor: darkcolor,
       textSelectionColor: Colors.black,
+
       textButtonTheme: TextButtonThemeData(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(darkcolor),
@@ -71,6 +70,7 @@ class Theme_Data
             backgroundColor: MaterialStateProperty.all(Colors.amber),
           )
       ),
+
   );
 
 }

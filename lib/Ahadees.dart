@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'AhadesFile.dart';
+import 'SowarFile.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'appprovider.dart';
 
@@ -13,6 +14,7 @@ class ahades extends StatefulWidget {
 String path = 'assets/';
 
 class _ahadesState extends State<ahades> {
+  static const lightcolor = const Color(0xFFb7935f);
   late AppProvider provider;
 
   @override
@@ -39,7 +41,7 @@ class _ahadesState extends State<ahades> {
                     child: Text(
                       AppLocalizations.of(context)!.appTitle,
                       style:
-                          TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                      TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
@@ -50,12 +52,22 @@ class _ahadesState extends State<ahades> {
                     width: 150,
                   ),
                 ),
+                SizedBox(height: 5,),
+                Container(
+                  height: 3,
+                  color: lightcolor,
+                  margin: EdgeInsets.all(8),
+                ),
                 Text(
                   AppLocalizations.of(context)!.elahades,
                   style: TextStyle(
-                    fontSize: 32.0,
-                    fontWeight: FontWeight.w800,
+                      fontSize: 22.0
                   ),
+                ),
+                Container(
+                  height: 3,
+                  color: lightcolor,
+                  margin: EdgeInsets.all(8),
                 ),
                 Flexible(
                   child: ListView(
@@ -176,12 +188,15 @@ class _ahadesState extends State<ahades> {
 TextButton MakeButton(String name, String filename, BuildContext context) {
   final AppProvider provider = Provider.of<AppProvider>(context);
   return TextButton(
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all(Colors.transparent)
+    ),
     child: Text(
       name,
       style: TextStyle(
-        fontSize: 30.0,
+        fontSize: 20.0,
         color: (provider.isDarkModeEnabled()) ? Colors.white : Colors.black,
-        fontWeight: FontWeight.w900,
+        fontWeight: FontWeight.bold,
       ),
     ),
     onPressed: () {
