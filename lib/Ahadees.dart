@@ -15,6 +15,7 @@ String path = 'assets/';
 
 class _ahadesState extends State<ahades> {
   static const lightcolor = const Color(0xFFb7935f);
+  static const darkIconColor = const Color(0xFFF4C12F);
   late AppProvider provider;
 
   @override
@@ -53,10 +54,10 @@ class _ahadesState extends State<ahades> {
                     width: 150,
                   ),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(height: 8,),
                 Container(
                   height: 3,
-                  color: lightcolor,
+                  color: provider.isDarkModeEnabled()? darkIconColor : lightcolor,
                   margin: EdgeInsets.all(8),
                 ),
                 Text(
@@ -67,7 +68,7 @@ class _ahadesState extends State<ahades> {
                 ),
                 Container(
                   height: 3,
-                  color: lightcolor,
+                  color: provider.isDarkModeEnabled()? darkIconColor : lightcolor,
                   margin: EdgeInsets.all(8),
                 ),
                 Flexible(
