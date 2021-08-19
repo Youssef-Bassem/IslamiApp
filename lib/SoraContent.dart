@@ -15,6 +15,8 @@ class Suracontent extends StatefulWidget {
 }
 
 class SuracontentState extends State<Suracontent> {
+  static const lightcolor = const Color(0xFFb7935f);
+  static const darkIconColor = const Color(0xFFF4C12F);
   late AppProvider provider;
   String data = '';
   fetchFileData() async {
@@ -81,13 +83,23 @@ class SuracontentState extends State<Suracontent> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 150.0),
-                  child: Center(
-                    child: Text(
-                      AppLocalizations.of(context)!.sora +
-                          ' ' +
-                          widget.suraname,
-                      style: TextStyle(fontSize: 20.0),
-                    ),
+                  child: Column(
+                    children: [
+                      Center(
+                        child: Text(
+                          AppLocalizations.of(context)!.sora +
+                              ' ' +
+                              widget.suraname,
+                          style: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(height: 5,),
+                      Container(
+                        height: 3,
+                        color: provider.isDarkModeEnabled()? darkIconColor : lightcolor,
+                        margin: EdgeInsets.all(8),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -95,7 +107,7 @@ class SuracontentState extends State<Suracontent> {
                 flex: 2,
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(0xFFF3F3F3),
+                    color: Colors.transparent.withOpacity(0.1),
                     borderRadius: BorderRadius.all(Radius.circular(10),),
                   ),
                   margin: EdgeInsets.all(10),
@@ -104,7 +116,7 @@ class SuracontentState extends State<Suracontent> {
                     child: Text(
                       data,
                       style: TextStyle(
-                        color: Colors.black,
+                        //color: Colors.black,
                         fontFamily: 'Lateef',
                         fontSize: 23,
                       ),
