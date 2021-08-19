@@ -61,11 +61,11 @@ class _radioState extends State<radio> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   IconButton(
-                      onPressed: (){},
-                      icon: Image.asset('assets/play_forward.png',height: 40,width: 40,
-                        color: ( provider.isDarkModeEnabled() ) ?
-                               darkIconColor : lightcolor,
-                      ),
+                    onPressed: (){},
+                    icon: Image.asset('assets/play_backward.png',height: 40,width: 40,
+                      color: ( provider.isDarkModeEnabled() ) ?
+                      darkIconColor : lightcolor,
+                    ),
                   ),
                   IconButton(
                     onPressed: (){},
@@ -76,7 +76,7 @@ class _radioState extends State<radio> {
                   ),
                   IconButton(
                     onPressed: (){},
-                    icon: Image.asset('assets/play_backward.png',height: 40,width: 40,
+                    icon: Image.asset('assets/play_forward.png',height: 40,width: 40,
                       color: ( provider.isDarkModeEnabled() ) ?
                       darkIconColor : lightcolor,
                     ),
