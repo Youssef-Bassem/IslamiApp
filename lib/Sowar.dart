@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'SowarFile.dart';
 
 class Quran extends StatelessWidget {
+  static const lightcolor = const Color(0xFFb7935f);
   late AppProvider provider;
   final SuwarFile sorafile = SuwarFile();
   @override
@@ -43,9 +44,20 @@ class Quran extends StatelessWidget {
                   width: 150,
                 ),
               ),
+              SizedBox(height: 5,),
+              Container(
+                height: 3,
+                color: lightcolor,
+                margin: EdgeInsets.all(8),
+              ),
               Text(
                 AppLocalizations.of(context)!.soraName,
-                style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 22.0),
+              ),
+              Container(
+                height: 3,
+                color: lightcolor,
+                margin: EdgeInsets.all(8),
               ),
               Expanded(
                 child: ListView.builder(
@@ -57,6 +69,7 @@ class Quran extends StatelessWidget {
                           sorafile.Sowar[index],
                           style: TextStyle(
                             fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
                             color: (provider.isDarkModeEnabled())
                                 ? Colors.white
                                 : Colors.black,

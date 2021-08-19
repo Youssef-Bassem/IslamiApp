@@ -61,7 +61,7 @@ class SuracontentState extends State<Suracontent> {
       ),
       extendBodyBehindAppBar: true,
       body: Container(
-        margin: EdgeInsets.all(3),
+        //margin: EdgeInsets.all(3),
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage(provider.isDarkModeEnabled()
