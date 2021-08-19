@@ -6,13 +6,16 @@ import 'package:task4_training/SideMenu.dart';
 import 'package:task4_training/Sowar.dart';
 import 'package:task4_training/Tasbeeh.dart';
 import 'package:task4_training/Radio.dart';
+import 'package:task4_training/UserPreferences.dart';
 import 'package:task4_training/l10n/l10n.dart';
 import 'ThemeData.dart';
-import 'suracontent.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'appprovider.dart';
+import 'UserPreferences.dart';
 
-void main() {
+Future main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserPreferences.init();
   runApp(MyApp());
 }
 
@@ -40,14 +43,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 
-    //provider = Provider.of<AppConfigProvider>(context);
-
     return ChangeNotifierProvider(
       create: (buildContext){
         return AppProvider();
       },
       builder: (buildContext, widget){
         final provider = Provider.of<AppProvider>(buildContext);
+        provider.themeMode = UserPreferences.getThemePreference();
+        provider.currentLanguage = UserPreferences.getLanguage();
         return MaterialApp(
           themeMode: provider.themeMode,
           theme: Theme_Data.Light_Theme,

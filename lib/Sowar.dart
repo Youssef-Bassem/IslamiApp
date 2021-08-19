@@ -89,7 +89,7 @@ class Quran extends StatelessWidget {
                                   suraname: (provider.currentLanguage=='ar')?
                                   sorafileAr.SowarArabicList[index]:
                                   sorafileEn.SowarEnglishList[index],
-                                  path: path + '1.txt'),
+                                  path: path + '$index.txt'),
                             ),
                           );
                         },

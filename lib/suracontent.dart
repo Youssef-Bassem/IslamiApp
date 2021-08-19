@@ -81,7 +81,7 @@ class SuracontentState extends State<Suracontent> {
                   padding: const EdgeInsets.only(top: 150.0),
                   child: Center(
                     child: Text(
-                      'سورة ' + widget.suraname,
+                      AppLocalizations.of(context)!.sora +' ' + widget.suraname,
                       style: TextStyle(fontSize: 20.0),
                     ),
                   ),
