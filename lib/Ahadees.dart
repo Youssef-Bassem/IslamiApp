@@ -43,14 +43,12 @@ class _ahadesState extends State<ahades> {
               Column(
                   children: <Widget>[
                     Container(
-                      margin: EdgeInsets.fromLTRB(0, 22, 20, 0),
-                      child: Center(child:Text(
-                        AppLocalizations.of(context)!.appTitle,
-                        style: TextStyle(
-                            fontSize: 34,
-                            fontWeight: FontWeight.bold
+                      child: Center(
+                        child: Text(
+                          AppLocalizations.of(context)!.appTitle,
+                          style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                         ),
-                      )),
+                      ),
                     ),
                     Container(
                       margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
