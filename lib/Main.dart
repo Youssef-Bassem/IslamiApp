@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
                   provider.isDarkModeEnabled() ? darkIconColor : Colors.black,
               items: [
                 BottomNavigationBarItem(
-                  label: 'Settings',
+                  label: provider.currentLanguage=='en'? 'Settings' : 'الاعدادات',
                   icon: Icon(
                     Icons.settings,
                     size: 40,
@@ -80,10 +80,10 @@ class _MyAppState extends State<MyApp> {
                           ? darkIconColor
                           : Colors.black),
                 ),
-                myNavigationBarItem('Radio', 'assets/radio.png'),
-                myNavigationBarItem('Tasbeh', 'assets/sebha.png'),
-                myNavigationBarItem('Ahades', 'assets/ahades.png'),
-                myNavigationBarItem('Quraan', 'assets/quraan.png'),
+                myNavigationBarItem(provider.currentLanguage=='en'? 'Radio' : 'راديو', 'assets/radio.png'),
+                myNavigationBarItem(provider.currentLanguage=='en'? 'Tasbeh' : 'تسبيح', 'assets/sebha.png'),
+                myNavigationBarItem(provider.currentLanguage=='en'? 'Ahades' : 'أحاديث', 'assets/ahades.png'),
+                myNavigationBarItem(provider.currentLanguage=='en'? 'Quraan' : 'قرآن', 'assets/quraan.png'),
               ],
               onTap: (index) {
                 setState(() {
