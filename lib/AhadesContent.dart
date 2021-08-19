@@ -16,6 +16,8 @@ class AhadethContent extends StatefulWidget {
 }
 
 class AhadethContentState extends State<AhadethContent> {
+  static const lightcolor = const Color(0xFFb7935f);
+  static const darkIconColor = const Color(0xFFF4C12F);
   late AppProvider provider;
   String data = '';
   fetchFileData() async {
@@ -72,32 +74,47 @@ class AhadethContentState extends State<AhadethContent> {
           ),
         ),
         child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 90.0, bottom: 0),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 150.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Container(
                   child: Text(
                     widget.hadethname,
                     style:
-                        TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
+                        TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                   ),
                 ),
-              ),
-              Expanded(
-                child: Container(
-                    margin: EdgeInsets.all(10),
-                    padding: EdgeInsets.all(10),
-                    color: Colors.transparent,
+                SizedBox(height: 5,),
+                Container(
+                  height: 3,
+                  color: provider.isDarkModeEnabled()? darkIconColor : lightcolor,
+                  margin: EdgeInsets.all(8),
+                ),
+                Expanded(
+                  child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent.withOpacity(0.1),
+                        borderRadius: BorderRadius.all(Radius.circular(10),),
+                      ),
+                      margin: EdgeInsets.all(10),
+                      padding: EdgeInsets.all(10),
                     child: SingleChildScrollView(
-                        child: Text(
-                      data,
-                      style: TextStyle(fontSize: 24),
-                      textDirection: TextDirection.rtl,
-                    ))),
-              ),
-            ],
+                      child: Text(
+                        data,
+                        style: TextStyle(
+                          //color: Colors.black,
+                          fontFamily: 'Lateef',
+                          fontSize: 23,
+                        ),
+                        textDirection: TextDirection.rtl,
+                      ),
+                    ),
+                ),
+            ),
+        ],
+        ),
           ),
         ),
       ),
