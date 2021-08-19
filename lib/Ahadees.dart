@@ -36,6 +36,7 @@ class _ahadesState extends State<ahades> {
             ),
             Column(
               children: <Widget>[
+                SizedBox(height: 15,),
                 Container(
                   child: Center(
                     child: Text(

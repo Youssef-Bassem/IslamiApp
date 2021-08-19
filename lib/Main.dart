@@ -60,23 +60,24 @@ class _MyAppState extends State<MyApp> {
               currentIndex: curr_index,
               selectedFontSize: 20,
               backgroundColor: Colors.white,
+              selectedItemColor: provider.isDarkModeEnabled()? darkIconColor : Colors.black,
               items:
               [
 
                 BottomNavigationBarItem(
-                  title: Text('Settings'),
+                  label: 'Settings',
                   icon:Icon(Icons.settings,size: 40,color: Colors.white,),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
                   activeIcon: new Icon(
                       Icons.settings,
                       size:40,
-                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.white
+                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.black
                   ),
                 ),
 
                 BottomNavigationBarItem(
-                  title: Text('radio'),
+                  label: 'radio',
                   icon: Image.asset('assets/radio.png',height: 40,width: 40),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
@@ -84,12 +85,12 @@ class _MyAppState extends State<MyApp> {
                       'assets/radio.png',
                       height:40,
                       width: 40,
-                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.white
+                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.black
                   ),
                 ),
 
                 BottomNavigationBarItem(
-                  title: Text('tasbeh'),
+                  label: 'tasbeh',
                   icon: Image.asset('assets/sebha.png',height: 40,width: 40,),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
@@ -97,12 +98,12 @@ class _MyAppState extends State<MyApp> {
                       'assets/sebha.png',
                       height:40,
                       width: 40,
-                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.white
+                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.black
                   ),
                 ),
 
                 BottomNavigationBarItem(
-                  title: Text('ahades'),
+                  label: 'ahades',
                   icon: Image.asset('assets/ahades.png',height: 40,width: 40,),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
@@ -110,12 +111,12 @@ class _MyAppState extends State<MyApp> {
                       'assets/ahades.png',
                       height:40,
                       width: 40,
-                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.white
+                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.black
                   ),
                 ),
 
                 BottomNavigationBarItem(
-                  title: Text('quraan'),
+                  label: 'quraan',
                   icon: Image.asset('assets/quraan.png',height: 40,width: 40,),
                   backgroundColor: (provider.isDarkModeEnabled()) ?
                   darkcolor : lightcolor,
@@ -123,7 +124,7 @@ class _MyAppState extends State<MyApp> {
                       'assets/quraan.png',
                       height:40,
                       width: 40,
-                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.white
+                      color: provider.isDarkModeEnabled()? darkIconColor : Colors.black
                   ),
                 )
               ],
