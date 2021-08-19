@@ -45,23 +45,6 @@ class SuracontentState extends State<Suracontent> {
     provider = Provider.of<AppProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        iconTheme: IconThemeData(
-            color: provider.isDarkModeEnabled() ? Colors.white : Colors.black),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        title: Container(
-          child: Text(
-            AppLocalizations.of(context)!.appTitle,
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
-      extendBodyBehindAppBar: true,
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
@@ -76,12 +59,32 @@ class SuracontentState extends State<Suracontent> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.arrow_back)),
+                  SizedBox(width: 110,),
+                  Text(
+                    AppLocalizations.of(context)!.appTitle,
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 150.0),
                   child: Center(
                     child: Text(
-                      AppLocalizations.of(context)!.sora +' ' + widget.suraname,
+                      AppLocalizations.of(context)!.sora +
+                          ' ' +
+                          widget.suraname,
                       style: TextStyle(fontSize: 20.0),
                     ),
                   ),
