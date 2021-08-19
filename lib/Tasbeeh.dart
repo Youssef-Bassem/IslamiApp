@@ -44,6 +44,7 @@ class _TasbeehState extends State<Tasbeeh> {
           child: Center(
             child: Column(
               children: <Widget>[
+                SizedBox(height: 15,),
                 Center(
                   child: Text(
                     AppLocalizations.of(context)!.appTitle,
@@ -87,6 +88,7 @@ class _TasbeehState extends State<Tasbeeh> {
                   AppLocalizations.of(context)!.tasbeh,
                   style: TextStyle(fontSize: 25),
                 ),
+                SizedBox(height: 15,),
                 TextButton(
                   onPressed: () {},
                   child: Text(

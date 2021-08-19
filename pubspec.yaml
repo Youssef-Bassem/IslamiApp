@@ -64,6 +64,7 @@ flutter:
     - assets/radio.png
     - assets/ahades.png
     - assets/sowarLogo.png
+    - assets/radio_logo.png
     - Quran/
 
   # An image asset can refer to one or more resolution-specific "variants", see

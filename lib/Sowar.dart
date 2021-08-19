@@ -29,6 +29,7 @@ class Quran extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 15,),
               Container(
                 child: Center(
                   child: Text(
