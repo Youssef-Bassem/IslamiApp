@@ -2,14 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:provider/provider.dart';
-import 'Appprovider.dart';
+import 'package:task4_training/Controller/AppProvider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AhadethContent extends StatefulWidget {
   final String hadethname;
   final String path;
   final int hadethnum;
-  const AhadethContent({required this.hadethname, required this.path,required this.hadethnum});
+  const AhadethContent(
+      {required this.hadethname, required this.path, required this.hadethnum});
 
   @override
   AhadethContentState createState() => AhadethContentState();
@@ -23,7 +24,7 @@ class AhadethContentState extends State<AhadethContent> {
   fetchFileData() async {
     int num = widget.hadethnum;
     String resp;
-    resp = await rootBundle.loadString(widget.path+'$num'+'.txt');
+    resp = await rootBundle.loadString(widget.path + '$num' + '.txt');
     List<String> items = resp.split('\n');
     resp = "";
     for (int i = 0; i < items.length; i++) {
@@ -83,23 +84,28 @@ class AhadethContentState extends State<AhadethContent> {
                   child: Text(
                     widget.hadethname,
                     style:
-                        TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                    TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(height: 5,),
+                SizedBox(
+                  height: 5,
+                ),
                 Container(
                   height: 3,
-                  color: provider.isDarkModeEnabled()? darkIconColor : lightcolor,
+                  color:
+                  provider.isDarkModeEnabled() ? darkIconColor : lightcolor,
                   margin: EdgeInsets.all(8),
                 ),
                 Expanded(
                   child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.transparent.withOpacity(0.1),
-                        borderRadius: BorderRadius.all(Radius.circular(10),),
+                    decoration: BoxDecoration(
+                      color: Colors.transparent.withOpacity(0.1),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
                       ),
-                      margin: EdgeInsets.all(10),
-                      padding: EdgeInsets.all(10),
+                    ),
+                    margin: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(10),
                     child: SingleChildScrollView(
                       child: Text(
                         data,
@@ -111,10 +117,10 @@ class AhadethContentState extends State<AhadethContent> {
                         textDirection: TextDirection.rtl,
                       ),
                     ),
+                  ),
                 ),
+              ],
             ),
-        ],
-        ),
           ),
         ),
       ),

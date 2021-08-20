@@ -1,18 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task4_training/SowarFileEnglish.dart';
-import 'Appprovider.dart';
-import 'SoraContent.dart';
+import 'package:task4_training/Controller/AppProvider.dart';
+import 'package:task4_training/Data/SowarArabicData.dart';
+import 'package:task4_training/Data/SowarEnglishData.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'SowarFileِArabic.dart';
+import 'package:task4_training/View/SubScreens/SowarSubScreen.dart';
 
 class Quran extends StatelessWidget {
   static const lightcolor = const Color(0xFFb7935f);
   static const darkIconColor = const Color(0xFFF4C12F);
+
   late AppProvider provider;
+
   final SuwarFileArabic sorafileAr = SuwarFileArabic();
   final SuwarFileEnglish sorafileEn = SuwarFileEnglish();
+
   @override
   Widget build(BuildContext context) {
     provider = Provider.of<AppProvider>(context);
@@ -32,7 +35,9 @@ class Quran extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 15,),
+              SizedBox(
+                height: 15,
+              ),
               Container(
                 child: Center(
                   child: Text(
@@ -48,10 +53,13 @@ class Quran extends StatelessWidget {
                   width: 150,
                 ),
               ),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               Container(
                 height: 3,
-                color: provider.isDarkModeEnabled()? darkIconColor : lightcolor,
+                color:
+                    provider.isDarkModeEnabled() ? darkIconColor : lightcolor,
                 margin: EdgeInsets.all(8),
               ),
               Text(
@@ -60,7 +68,8 @@ class Quran extends StatelessWidget {
               ),
               Container(
                 height: 3,
-                color: provider.isDarkModeEnabled()? darkIconColor : lightcolor,
+                color:
+                    provider.isDarkModeEnabled() ? darkIconColor : lightcolor,
                 margin: EdgeInsets.all(8),
               ),
               Expanded(
@@ -70,9 +79,9 @@ class Quran extends StatelessWidget {
                     return ListTile(
                       title: MaterialButton(
                         child: Text(
-                          (provider.currentLanguage=='ar')?
-                          sorafileAr.SowarArabicList[index]:
-                              sorafileEn.SowarEnglishList[index],
+                          (provider.currentLanguage == 'ar')
+                              ? sorafileAr.SowarArabicList[index]
+                              : sorafileEn.SowarEnglishList[index],
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
@@ -86,10 +95,12 @@ class Quran extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) => Suracontent(
-                                  suraname: (provider.currentLanguage=='ar')?
-                                  sorafileAr.SowarArabicList[index]:
-                                  sorafileEn.SowarEnglishList[index],
-                                  path: path , soranum: index+1,),
+                                suraname: (provider.currentLanguage == 'ar')
+                                    ? sorafileAr.SowarArabicList[index]
+                                    : sorafileEn.SowarEnglishList[index],
+                                path: path,
+                                soranum: index + 1,
+                              ),
                             ),
                           );
                         },

@@ -20,15 +20,13 @@ class UserPreferences {
     String name;
     if (_themeMode == ThemeMode.light) {
       name = 'light';
-    }
-    else {
+    } else {
       name = 'dark';
     }
     _preferences.setString(_theme, name);
   }
 
   static ThemeMode getThemePreference() {
-
     String theme = _preferences.getString(_theme).toString();
 
     if (theme == 'light')

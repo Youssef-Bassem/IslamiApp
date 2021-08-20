@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'Appprovider.dart';
+import 'package:task4_training/Controller/AppProvider.dart';
 
 class Suracontent extends StatefulWidget {
   final String suraname;
   final String path;
   final int soranum;
-  const Suracontent({required this.suraname, required this.path , required this.soranum});
+  const Suracontent(
+      {required this.suraname, required this.path, required this.soranum});
 
   @override
   SuracontentState createState() => SuracontentState();
@@ -22,7 +23,7 @@ class SuracontentState extends State<Suracontent> {
   fetchFileData() async {
     String resp;
     int num = widget.soranum;
-    resp = await rootBundle.loadString(widget.path+'$num'+'.txt');
+    resp = await rootBundle.loadString(widget.path + '$num' + '.txt');
     List<String> items = resp.split('\n');
     resp = "";
     for (int i = 0; i < items.length; i++) {
@@ -69,7 +70,9 @@ class SuracontentState extends State<Suracontent> {
                         Navigator.pop(context);
                       },
                       icon: Icon(Icons.arrow_back)),
-                  SizedBox(width: 110,),
+                  SizedBox(
+                    width: 90,
+                  ),
                   Text(
                     AppLocalizations.of(context)!.appTitle,
                     style: TextStyle(
@@ -82,7 +85,7 @@ class SuracontentState extends State<Suracontent> {
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 150.0),
+                  padding: const EdgeInsets.only(top: 120.0),
                   child: Column(
                     children: [
                       Center(
@@ -90,13 +93,18 @@ class SuracontentState extends State<Suracontent> {
                           AppLocalizations.of(context)!.sora +
                               ' ' +
                               widget.suraname,
-                          style: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 25.0, fontWeight: FontWeight.bold),
                         ),
                       ),
-                      SizedBox(height: 5,),
+                      SizedBox(
+                        height: 5,
+                      ),
                       Container(
                         height: 3,
-                        color: provider.isDarkModeEnabled()? darkIconColor : lightcolor,
+                        color: provider.isDarkModeEnabled()
+                            ? darkIconColor
+                            : lightcolor,
                         margin: EdgeInsets.all(8),
                       ),
                     ],
@@ -108,7 +116,9 @@ class SuracontentState extends State<Suracontent> {
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.transparent.withOpacity(0.1),
-                    borderRadius: BorderRadius.all(Radius.circular(10),),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
                   ),
                   margin: EdgeInsets.all(10),
                   padding: EdgeInsets.all(10),

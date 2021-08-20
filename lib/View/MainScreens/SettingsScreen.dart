@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'Appprovider.dart';
+import 'package:task4_training/Controller/AppProvider.dart';
 
 class SideMenu extends StatefulWidget {
   @override
@@ -30,7 +30,9 @@ class _SideMenuState extends State<SideMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 Center(
                   child: Text(
                     AppLocalizations.of(context)!.settings,
@@ -44,13 +46,15 @@ class _SideMenuState extends State<SideMenu> {
                   onTap: () {
                     changeTheme();
                   },
-                  child: myRow(AppLocalizations.of(context)!.themes, Icons.add_to_photos_outlined),
+                  child: myRow(AppLocalizations.of(context)!.themes,
+                      Icons.add_to_photos_outlined),
                 ),
                 InkWell(
                   onTap: () {
                     changeLanguage();
                   },
-                  child: myRow(AppLocalizations.of(context)!.language, Icons.language),
+                  child: myRow(
+                      AppLocalizations.of(context)!.language, Icons.language),
                 ),
               ],
             ),

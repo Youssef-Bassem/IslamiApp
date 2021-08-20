@@ -1,11 +1,10 @@
-
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
-import 'package:task4_training/Appprovider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:task4_training/Controller/AppProvider.dart';
 
 int tasbeehCounter = 0;
 List<String> tasbeehat = [
@@ -44,7 +43,9 @@ class _TasbeehState extends State<Tasbeeh> {
           child: Center(
             child: Column(
               children: <Widget>[
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 Center(
                   child: Text(
                     AppLocalizations.of(context)!.appTitle,
@@ -85,7 +86,9 @@ class _TasbeehState extends State<Tasbeeh> {
                   AppLocalizations.of(context)!.tasbeh,
                   style: TextStyle(fontSize: 25),
                 ),
-                SizedBox(height: 15,),
+                SizedBox(
+                  height: 15,
+                ),
                 TextButton(
                   onPressed: () {},
                   child: Text(
@@ -105,7 +108,9 @@ class _TasbeehState extends State<Tasbeeh> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 ElevatedButton(
                   child: Text(
                     tasbeehat[index],

@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:task4_training/Ahadees.dart';
-import 'package:task4_training/SideMenu.dart';
-import 'package:task4_training/Sowar.dart';
-import 'package:task4_training/Tasbeeh.dart';
-import 'package:task4_training/Radio.dart';
-import 'package:task4_training/UserPreferences.dart';
+import 'package:task4_training/Data/ThemeData.dart';
+import 'package:task4_training/View/MainScreens/AhadeesScreen.dart';
+import 'package:task4_training/View/MainScreens/SettingsScreen.dart';
+import 'package:task4_training/View/MainScreens/TasbeehScreen.dart';
+import 'package:task4_training/View/MainScreens/SowarScreen.dart';
+import 'package:task4_training/View/MainScreens/RadioScreen.dart';
 import 'package:task4_training/l10n/l10n.dart';
-import 'ThemeData.dart';
+import 'package:task4_training/Data/UserPreferencesData.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'Appprovider.dart';
-import 'UserPreferences.dart';
+import 'package:task4_training/Controller/AppProvider.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -66,7 +65,9 @@ class _MyAppState extends State<MyApp> {
                   provider.isDarkModeEnabled() ? darkIconColor : Colors.black,
               items: [
                 BottomNavigationBarItem(
-                  label: provider.currentLanguage=='en'? 'Settings' : 'الاعدادات',
+                  label: provider.currentLanguage == 'en'
+                      ? 'Settings'
+                      : 'الاعدادات',
                   icon: Icon(
                     Icons.settings,
                     size: 40,
@@ -80,10 +81,18 @@ class _MyAppState extends State<MyApp> {
                           ? darkIconColor
                           : Colors.black),
                 ),
-                myNavigationBarItem(provider.currentLanguage=='en'? 'Radio' : 'راديو', 'assets/radio.png'),
-                myNavigationBarItem(provider.currentLanguage=='en'? 'Tasbeh' : 'تسبيح', 'assets/sebha.png'),
-                myNavigationBarItem(provider.currentLanguage=='en'? 'Ahades' : 'أحاديث', 'assets/ahades.png'),
-                myNavigationBarItem(provider.currentLanguage=='en'? 'Quraan' : 'قرآن', 'assets/quraan.png'),
+                myNavigationBarItem(
+                    provider.currentLanguage == 'en' ? 'Radio' : 'راديو',
+                    'assets/radio.png'),
+                myNavigationBarItem(
+                    provider.currentLanguage == 'en' ? 'Tasbeh' : 'تسبيح',
+                    'assets/sebha.png'),
+                myNavigationBarItem(
+                    provider.currentLanguage == 'en' ? 'Ahades' : 'أحاديث',
+                    'assets/ahades.png'),
+                myNavigationBarItem(
+                    provider.currentLanguage == 'en' ? 'Quraan' : 'قرآن',
+                    'assets/quraan.png'),
               ],
               onTap: (index) {
                 setState(() {
