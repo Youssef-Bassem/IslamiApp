@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:task4_training/AhadesFileArabic.dart';
-import 'package:task4_training/AhadesFileEnglish.dart';
-import 'AhadesContent.dart';
+import 'package:task4_training/Data/AhadeesArabicData.dart';
+import 'package:task4_training/Data/AhadeesEnglishData.dart';
+import 'package:task4_training/View/SubScreens/AhadeesSubScreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'Appprovider.dart';
+import 'package:task4_training/Controller/AppProvider.dart';
 
 class ahades extends StatefulWidget {
   @override
@@ -99,10 +99,10 @@ class _ahadesState extends State<ahades> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => AhadethContent(
-                                    hadethname: (provider.currentLanguage=='ar')?
-                                    ahadesfileAr.AhadesArabicList[index]:
-                                    ahadesfileEn.AhadesEnglishList[index],
-                                    path: path , hadethnum: index +1 ,),
+                                  hadethname: (provider.currentLanguage=='ar')?
+                                  ahadesfileAr.AhadesArabicList[index]:
+                                  ahadesfileEn.AhadesEnglishList[index],
+                                  path: path , hadethnum: index +1 ,),
                               ),
                             );
                           },
