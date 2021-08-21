@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Theme_Data {
-  static const lightcolor = const Color(0xFFb7935f);
-  static const darkcolor = const Color(0xFF083668);
+class MyThemeData {
+  static const lightColor = const Color(0xFFb7935f);
+  static const darkColor = const Color(0xFF083668);
 
-  static final Light_Theme = ThemeData(
+  static final lightTheme = ThemeData(
     primaryColor: Colors.white,
     primaryColorBrightness: Brightness.light,
     brightness: Brightness.light,
     primaryColorDark: Colors.black,
     canvasColor: Colors.white,
     accentColor: Colors.black,
-    scaffoldBackgroundColor: lightcolor,
-    textSelectionColor: Colors.white,
+    scaffoldBackgroundColor: lightColor,
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(lightcolor),
+        backgroundColor: MaterialStateProperty.all(lightColor),
         textStyle: MaterialStateProperty.all(
           TextStyle(color: Colors.black),
         ),
@@ -23,12 +22,12 @@ class Theme_Data {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(lightcolor),
+        backgroundColor: MaterialStateProperty.all(lightColor),
       ),
     ),
   );
 
-  static final Dark_Theme = ThemeData(
+  static final darkTheme = ThemeData(
     primaryColor: Colors.black,
     primaryColorBrightness: Brightness.dark,
     primaryColorLight: Colors.black,
@@ -37,11 +36,10 @@ class Theme_Data {
     indicatorColor: Colors.white,
     canvasColor: Colors.black,
     accentColor: Colors.white,
-    scaffoldBackgroundColor: darkcolor,
-    textSelectionColor: Colors.black,
+    scaffoldBackgroundColor: darkColor,
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(darkcolor),
+        backgroundColor: MaterialStateProperty.all(darkColor),
         textStyle: MaterialStateProperty.all(
           TextStyle(color: Colors.white),
         ),

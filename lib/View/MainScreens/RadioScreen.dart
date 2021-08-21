@@ -3,13 +3,13 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:task4_training/Controller/AppProvider.dart';
 
-class radio extends StatefulWidget {
+class RadioScreen extends StatefulWidget {
   @override
-  _radioState createState() => _radioState();
+  _RadioState createState() => _RadioState();
 }
 
-class _radioState extends State<radio> {
-  static const lightcolor = const Color(0xFFb7935f);
+class _RadioState extends State<RadioScreen> {
+  static const lightColor = const Color(0xFFb7935f);
   static const darkIconColor = const Color(0xFFF4C12F);
   late AppProvider provider;
 
@@ -65,44 +65,26 @@ class _radioState extends State<radio> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Image.asset(
-                      'assets/play_backward.png',
-                      height: 40,
-                      width: 40,
-                      color: (provider.isDarkModeEnabled())
-                          ? darkIconColor
-                          : lightcolor,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Image.asset(
-                      'assets/play.png',
-                      height: 40,
-                      width: 40,
-                      color: (provider.isDarkModeEnabled())
-                          ? darkIconColor
-                          : lightcolor,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Image.asset(
-                      'assets/play_forward.png',
-                      height: 40,
-                      width: 40,
-                      color: (provider.isDarkModeEnabled())
-                          ? darkIconColor
-                          : lightcolor,
-                    ),
-                  ),
+                  myIconButton('assets/play_backward.png'),
+                  myIconButton('assets/play.png'),
+                  myIconButton('assets/play_forward.png'),
                 ],
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  IconButton myIconButton(String imagePath) {
+    return IconButton(
+      onPressed: () {},
+      icon: Image.asset(
+        imagePath,
+        height: 40,
+        width: 40,
+        color: (provider.isDarkModeEnabled()) ? darkIconColor : lightColor,
       ),
     );
   }

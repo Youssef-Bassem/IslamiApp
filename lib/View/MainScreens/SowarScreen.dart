@@ -7,14 +7,15 @@ import 'package:task4_training/Data/SowarEnglishData.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:task4_training/View/SubScreens/SowarSubScreen.dart';
 
+// ignore: must_be_immutable
 class Quran extends StatelessWidget {
-  static const lightcolor = const Color(0xFFb7935f);
+  static const lightColor = const Color(0xFFb7935f);
   static const darkIconColor = const Color(0xFFF4C12F);
 
   late AppProvider provider;
 
-  final SuwarFileArabic sorafileAr = SuwarFileArabic();
-  final SuwarFileEnglish sorafileEn = SuwarFileEnglish();
+  final SowarFileArabic soraFileAr = SowarFileArabic();
+  final SowarFileEnglish soraFileEn = SowarFileEnglish();
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +60,7 @@ class Quran extends StatelessWidget {
               Container(
                 height: 3,
                 color:
-                    provider.isDarkModeEnabled() ? darkIconColor : lightcolor,
+                    provider.isDarkModeEnabled() ? darkIconColor : lightColor,
                 margin: EdgeInsets.all(8),
               ),
               Text(
@@ -69,19 +70,19 @@ class Quran extends StatelessWidget {
               Container(
                 height: 3,
                 color:
-                    provider.isDarkModeEnabled() ? darkIconColor : lightcolor,
+                    provider.isDarkModeEnabled() ? darkIconColor : lightColor,
                 margin: EdgeInsets.all(8),
               ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: sorafileAr.SowarArabicList.length,
+                  itemCount: soraFileAr.sowarArabicList.length,
                   itemBuilder: (context, index) {
                     return ListTile(
                       title: MaterialButton(
                         child: Text(
                           (provider.currentLanguage == 'ar')
-                              ? sorafileAr.SowarArabicList[index]
-                              : sorafileEn.SowarEnglishList[index],
+                              ? soraFileAr.sowarArabicList[index]
+                              : soraFileEn.sowarEnglishList[index],
                           style: TextStyle(
                             fontSize: 20.0,
                             fontWeight: FontWeight.bold,
@@ -96,8 +97,8 @@ class Quran extends StatelessWidget {
                             MaterialPageRoute(
                               builder: (context) => Suracontent(
                                 suraname: (provider.currentLanguage == 'ar')
-                                    ? sorafileAr.SowarArabicList[index]
-                                    : sorafileEn.SowarEnglishList[index],
+                                    ? soraFileAr.sowarArabicList[index]
+                                    : soraFileEn.sowarEnglishList[index],
                                 path: path,
                                 soranum: index + 1,
                               ),

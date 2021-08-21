@@ -1,5 +1,5 @@
-class AhadesFileEnglish {
-  List<String> AhadesEnglishList = [
+class AhadeesFileEnglish {
+  List<String> ahadeesEnglishList = [
     " Hadess 1",
     " Hadess 2",
     " Hadess 3 ",

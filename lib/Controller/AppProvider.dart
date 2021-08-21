@@ -25,9 +25,9 @@ class AppProvider extends ChangeNotifier {
     }
   }
 
-  void changeLanguage(String Language) {
-    if (currentLanguage == Language) return;
-    currentLanguage = Language;
+  void changeLanguage(String language) {
+    if (currentLanguage == language) return;
+    currentLanguage = language;
     UserPreferences.setLanguage(currentLanguage);
     notifyListeners();
   }

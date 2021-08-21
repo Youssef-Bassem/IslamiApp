@@ -7,19 +7,19 @@ import 'package:task4_training/View/SubScreens/AhadeesSubScreen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:task4_training/Controller/AppProvider.dart';
 
-class ahades extends StatefulWidget {
+class Ahadees extends StatefulWidget {
   @override
-  _ahadesState createState() => _ahadesState();
+  _AhadeesState createState() => _AhadeesState();
 }
 
 String path = 'assets/';
 
-class _ahadesState extends State<ahades> {
+class _AhadeesState extends State<Ahadees> {
   static const lightcolor = const Color(0xFFb7935f);
   static const darkIconColor = const Color(0xFFF4C12F);
 
-  final AhadesFileArabic ahadesfileAr = AhadesFileArabic();
-  final AhadesFileEnglish ahadesfileEn = AhadesFileEnglish();
+  final AhadeesFileArabic ahadeesFileAr = AhadeesFileArabic();
+  final AhadeesFileEnglish ahadeesFileEn = AhadeesFileEnglish();
 
   late AppProvider provider;
 
@@ -78,14 +78,14 @@ class _ahadesState extends State<ahades> {
                 ),
                 Flexible(
                   child: ListView.builder(
-                    itemCount: ahadesfileAr.AhadesArabicList.length,
+                    itemCount: ahadeesFileAr.ahadeesArabicList.length,
                     itemBuilder: (context, index) {
                       return ListTile(
                         title: MaterialButton(
                           child: Text(
                             (provider.currentLanguage=='ar')?
-                            ahadesfileAr.AhadesArabicList[index]:
-                            ahadesfileEn.AhadesEnglishList[index],
+                            ahadeesFileAr.ahadeesArabicList[index]:
+                            ahadeesFileEn.ahadeesEnglishList[index],
                             style: TextStyle(
                               fontSize: 20.0,
                               fontWeight: FontWeight.bold,
@@ -100,8 +100,8 @@ class _ahadesState extends State<ahades> {
                               MaterialPageRoute(
                                 builder: (context) => AhadethContent(
                                   hadethname: (provider.currentLanguage=='ar')?
-                                  ahadesfileAr.AhadesArabicList[index]:
-                                  ahadesfileEn.AhadesEnglishList[index],
+                                  ahadeesFileAr.ahadeesArabicList[index]:
+                                  ahadeesFileEn.ahadeesEnglishList[index],
                                   path: path , hadethnum: index +1 ,),
                               ),
                             );

@@ -1,5 +1,5 @@
-class AhadesFileArabic {
-  List<String> AhadesArabicList = [
+class AhadeesFileArabic {
+  List<String> ahadeesArabicList = [
     "الحديث الأول",
     "الحديث الثاني",
     "الحديث الثالث ",

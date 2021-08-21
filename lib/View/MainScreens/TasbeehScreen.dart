@@ -53,7 +53,7 @@ class _TasbeehState extends State<Tasbeeh> {
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
                 Stack(
                   children: [
@@ -79,15 +79,9 @@ class _TasbeehState extends State<Tasbeeh> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 15,
-                ),
                 Text(
                   AppLocalizations.of(context)!.tasbeh,
                   style: TextStyle(fontSize: 25),
-                ),
-                SizedBox(
-                  height: 15,
                 ),
                 TextButton(
                   onPressed: () {},
@@ -112,7 +106,7 @@ class _TasbeehState extends State<Tasbeeh> {
                   height: 10,
                 ),
                 ElevatedButton(
-                  child: Text(
+                  child: Text(  
                     tasbeehat[index],
                     style: TextStyle(
                       color: (provider.isDarkModeEnabled())

@@ -1,5 +1,5 @@
-class SuwarFileEnglish {
-  List<String> SowarEnglishList = [
+class SowarFileEnglish {
+  List<String> sowarEnglishList = [
     "al-Fatihah",
     "al-Baqarah",
     "Al-Imran",

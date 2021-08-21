@@ -26,16 +26,16 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   late AppProvider provider;
 
-  int curr_index = 4;
-  static const lightcolor = const Color(0xFFb7935f);
-  static const darkcolor = const Color(0xFF083668);
+  int currIndex = 4;
+  static const lightColor = const Color(0xFFb7935f);
+  static const darkColor = const Color(0xFF083668);
   static const darkIconColor = const Color(0xFFF4C12F);
 
   final tabs = [
     SideMenu(),
-    radio(),
+    RadioScreen(),
     Tasbeeh(),
-    ahades(),
+    Ahadees(),
     Quran(),
   ];
 
@@ -51,14 +51,14 @@ class _MyAppState extends State<MyApp> {
         provider.currentLanguage = UserPreferences.getLanguage();
         return MaterialApp(
           themeMode: provider.themeMode,
-          theme: Theme_Data.Light_Theme,
-          darkTheme: Theme_Data.Dark_Theme,
+          theme: MyThemeData.lightTheme,
+          darkTheme: MyThemeData.darkTheme,
           debugShowCheckedModeBanner: false,
           home: Scaffold(
             drawer: SideMenu(),
-            body: tabs[curr_index],
+            body: tabs[currIndex],
             bottomNavigationBar: BottomNavigationBar(
-              currentIndex: curr_index,
+              currentIndex: currIndex,
               selectedFontSize: 20,
               backgroundColor: Colors.white,
               selectedItemColor:
@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
                     color: Colors.white,
                   ),
                   backgroundColor:
-                      (provider.isDarkModeEnabled()) ? darkcolor : lightcolor,
+                      (provider.isDarkModeEnabled()) ? darkColor : lightColor,
                   activeIcon: new Icon(Icons.settings,
                       size: 40,
                       color: provider.isDarkModeEnabled()
@@ -96,7 +96,7 @@ class _MyAppState extends State<MyApp> {
               ],
               onTap: (index) {
                 setState(() {
-                  curr_index = index;
+                  currIndex = index;
                 });
               },
             ),
@@ -122,7 +122,7 @@ class _MyAppState extends State<MyApp> {
         height: 40,
         width: 40,
       ),
-      backgroundColor: (provider.isDarkModeEnabled()) ? darkcolor : lightcolor,
+      backgroundColor: (provider.isDarkModeEnabled()) ? darkColor : lightColor,
       activeIcon: new Image.asset(myIcon,
           height: 40,
           width: 40,
