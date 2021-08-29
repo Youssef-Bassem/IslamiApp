@@ -2,15 +2,23 @@ import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:provider/provider.dart';
+import 'package:task4_training/Controller/AppProvider.dart';
+import 'package:task4_training/Radio_Api/SourceResponse.dart';
 
 class Audio extends StatefulWidget {
+  final List<Source> radios;
+  Audio(this.radios);
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<Audio> with WidgetsBindingObserver {
+  int index = 0;
+  static const lightColor = const Color(0xFFb7935f);
+  static const darkIconColor = const Color(0xFFF4C12F);
+  late AppProvider provider;
   final _player = AudioPlayer();
-
   @override
   void initState() {
     super.initState();
@@ -26,11 +34,11 @@ class _MyAppState extends State<Audio> with WidgetsBindingObserver {
     await session.configure(AudioSessionConfiguration.speech());
     _player.playbackEventStream.listen((event) {},
         onError: (Object e, StackTrace stackTrace) {
-          print('A stream error occurred: $e');
-        });
+      print('A stream error occurred: $e');
+    });
     try {
-      await _player.setAudioSource(AudioSource.uri(Uri.parse(
-          "http://live.mp3quran.net:9992")));
+      await _player.setAudioSource(
+          AudioSource.uri(Uri.parse(widget.radios[index].radio_url)));
     } catch (e) {
       print("Error loading audio source: $e");
     }
@@ -52,92 +60,111 @@ class _MyAppState extends State<Audio> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+    provider = Provider.of<AppProvider>(context);
+    return Container(
+      color: Colors.transparent,
+      child: Column(
+        children: [
+          Text(
+            widget.radios[index].name,
+            style: TextStyle(
+              fontStyle: FontStyle.italic,
+              fontSize: 17,
+            ),
+          ),
+          SizedBox(height:10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              // Display play/pause button and volume/speed sliders.
-              ControlButtons(_player),
-              // Display seek bar. Using StreamBuilder, this widget rebuilds
-              // each time the position, buffered position or duration changes.
+              myIconButton('assets/play_backward.png'),
+              //myIconButton(icon),
+
+              StreamBuilder<PlayerState>(
+                stream: _player.playerStateStream,
+                builder: (context, snapshot) {
+                  final playerState = snapshot.data;
+                  final processingState = playerState?.processingState;
+                  final playing = playerState?.playing;
+                  if (processingState == ProcessingState.loading ||
+                      processingState == ProcessingState.buffering) {
+                    return Container(
+                      margin: EdgeInsets.all(8.0),
+                      width: 64.0,
+                      height: 64.0,
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (playing != true) {
+                    return IconButton(
+                      icon: Icon(Icons.play_arrow),
+                      color: (provider.isDarkModeEnabled())
+                          ? darkIconColor
+                          : lightColor,
+                      iconSize: 64.0,
+                      onPressed: _player.play,
+                    );
+                  } else if (processingState != ProcessingState.completed) {
+                    return IconButton(
+                      icon: Icon(Icons.pause),
+                      color: (provider.isDarkModeEnabled())
+                          ? darkIconColor
+                          : lightColor,
+                      iconSize: 64.0,
+                      onPressed: _player.pause,
+                    );
+                  } else {
+                    return IconButton(
+                      icon: Icon(Icons.replay),
+                      color: (provider.isDarkModeEnabled())
+                          ? darkIconColor
+                          : lightColor,
+                      iconSize: 64.0,
+                      onPressed: () => _player.seek(Duration.zero),
+                    );
+                  }
+                },
+              ),
+
+              myIconButton('assets/play_forward.png'),
             ],
           ),
-        ),
+        ],
       ),
     );
   }
-}
 
-/// Displays the play/pause button and volume/speed sliders.
-class ControlButtons extends StatelessWidget {
-  final AudioPlayer player;
-
-  ControlButtons(this.player);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Opens volume slider dialog
-        IconButton(
-          icon: Icon(Icons.volume_up),
-          onPressed: () {},
-        ),
-
-        /// This StreamBuilder rebuilds whenever the player state changes, which
-        /// includes the playing/paused state and also the
-        /// loading/buffering/ready state. Depending on the state we show the
-        /// appropriate button or loading indicator.
-        StreamBuilder<PlayerState>(
-          stream: player.playerStateStream,
-          builder: (context, snapshot) {
-            final playerState = snapshot.data;
-            final processingState = playerState?.processingState;
-            final playing = playerState?.playing;
-            if (processingState == ProcessingState.loading ||
-                processingState == ProcessingState.buffering) {
-              return Container(
-                margin: EdgeInsets.all(8.0),
-                width: 64.0,
-                height: 64.0,
-                child: CircularProgressIndicator(),
-              );
-            } else if (playing != true) {
-              return IconButton(
-                icon: Icon(Icons.play_arrow),
-                iconSize: 64.0,
-                onPressed: player.play,
-              );
-            } else if (processingState != ProcessingState.completed) {
-              return IconButton(
-                icon: Icon(Icons.pause),
-                iconSize: 64.0,
-                onPressed: player.pause,
-              );
-            } else {
-              return IconButton(
-                icon: Icon(Icons.replay),
-                iconSize: 64.0,
-                onPressed: () => player.seek(Duration.zero),
-              );
-            }
-          },
-        ),
-        // Opens speed slider dialog
-        StreamBuilder<double>(
-          stream: player.speedStream,
-          builder: (context, snapshot) => IconButton(
-            icon: Text("${snapshot.data?.toStringAsFixed(1)}x",
-                style: TextStyle(fontWeight: FontWeight.bold)),
-            onPressed: () {},
-          ),
-        ),
-      ],
+  IconButton myIconButton(String imagePath) {
+    return IconButton(
+      onPressed: () {
+        setState(() {
+          detectAction(imagePath);
+        });
+      },
+      icon: Image.asset(
+        imagePath,
+        height: 40,
+        width: 40,
+        color: (provider.isDarkModeEnabled()) ? darkIconColor : lightColor,
+      ),
     );
+  }
+
+  void detectAction(String image) {
+    if (image == 'assets/play_backward.png') {
+      setState(() {
+        if (index > 0) {
+          print(index);
+          index--;
+          _init();
+        }
+      });
+    } else if (image == 'assets/play_forward.png') {
+      setState(() {
+        if (index < widget.radios.length - 1) {
+          print(index);
+          index++;
+          _init();
+        }
+      });
+    }
   }
 }

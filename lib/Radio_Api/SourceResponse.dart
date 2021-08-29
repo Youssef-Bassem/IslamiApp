@@ -8,6 +8,7 @@ class SourceResponse {
 
 class Source {
   String name ;
+  // ignore: non_constant_identifier_names
   String radio_url;
 
   Source.fromJson(Map<String , dynamic>  map ):
