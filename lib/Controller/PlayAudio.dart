@@ -4,10 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'package:task4_training/Controller/AppProvider.dart';
-import 'package:task4_training/Radio_Api/SourceResponse.dart';
+import 'package:task4_training/Radio_Api/RadioItems.dart';
+import 'dart:convert' show utf8;
+
 
 class Audio extends StatefulWidget {
-  final List<Source> radios;
+  final List<RadioItems> radios;
   Audio(this.radios);
   @override
   _MyAppState createState() => _MyAppState();
@@ -18,6 +20,7 @@ class _MyAppState extends State<Audio> with WidgetsBindingObserver {
   static const lightColor = const Color(0xFFb7935f);
   static const darkIconColor = const Color(0xFFF4C12F);
   late AppProvider provider;
+  late String radioName;
   final _player = AudioPlayer();
   @override
   void initState() {
@@ -66,7 +69,7 @@ class _MyAppState extends State<Audio> with WidgetsBindingObserver {
       child: Column(
         children: [
           Text(
-            widget.radios[index].name,
+            radioName = getRadioName(widget.radios[index].name),
             style: TextStyle(
               fontStyle: FontStyle.italic,
               fontSize: 17,
@@ -132,6 +135,11 @@ class _MyAppState extends State<Audio> with WidgetsBindingObserver {
     );
   }
 
+  String getRadioName(String name){
+    var encoded = utf8.encode(name);
+    var decoded = utf8.decode(encoded);
+    return decoded;
+  }
   IconButton myIconButton(String imagePath) {
     return IconButton(
       onPressed: () {

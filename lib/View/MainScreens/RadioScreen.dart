@@ -4,8 +4,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:task4_training/Controller/AppProvider.dart';
 import 'package:http/http.dart' as http;
-import 'package:task4_training/Radio_Api/Play.dart';
-import 'package:task4_training/Radio_Api/SourceResponse.dart';
+import '../../Controller/PlayAudio.dart';
+import 'package:task4_training/Radio_Api/RadioList.dart';
 
 class RadioScreen extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class RadioScreen extends StatefulWidget {
 class _RadioState extends State<RadioScreen> with WidgetsBindingObserver {
   String icon = 'assets/play.png';
   late AppProvider provider;
-  late Future<SourceResponse> radioFuture;
+  late Future<ListOfRadios> radioFuture;
   @override
   void initState() {
     // TODO: implement initState
@@ -74,7 +74,7 @@ class _RadioState extends State<RadioScreen> with WidgetsBindingObserver {
               Expanded(
                 child: Container(
                   color: Colors.transparent,
-                  child: FutureBuilder<SourceResponse>(
+                  child: FutureBuilder<ListOfRadios>(
                     future: radioFuture,
                     builder: (context, snapShot) {
                       if (snapShot.hasData) {
@@ -98,18 +98,17 @@ class _RadioState extends State<RadioScreen> with WidgetsBindingObserver {
       ),
     );
   }
-  Future<SourceResponse> getRadioAudio(String currentLanguage) async {
+  Future<ListOfRadios> getRadioAudio(String currentLanguage) async {
     final uri;
     if(currentLanguage == "en")
       uri = Uri.https('api.mp3quran.net', '/radios/radio_english.json');
     else
       uri = Uri.https('api.mp3quran.net', '/radios/radio_arabic.json');
 
-    // https://api.mp3quran.net/radios/radio_english.json
     final response = await http.get(uri);
     print(response.body);
     if (response.statusCode == 200) {
-      return SourceResponse.fromJson(jsonDecode(response.body));
+      return ListOfRadios.fromJson(jsonDecode(utf8.decode(response.bodyBytes)));
     } else {
       throw Exception(response.body);
     }
