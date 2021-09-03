@@ -92,6 +92,14 @@ class _SideMenuState extends State<SideMenu> {
         context: context,
         builder: (builderContext) {
           return Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(provider.isDarkModeEnabled()
+                    ? "assets/bg.png"
+                    : "assets/ahades1.png"),
+                fit: BoxFit.fill,
+              ),
+            ),
             child: Column(
               children: [
                 InkWell(
@@ -123,6 +131,14 @@ class _SideMenuState extends State<SideMenu> {
         context: context,
         builder: (builderContext) {
           return Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(provider.isDarkModeEnabled()
+                    ? "assets/bg.png"
+                    : "assets/ahades1.png"),
+                fit: BoxFit.fill,
+              ),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
