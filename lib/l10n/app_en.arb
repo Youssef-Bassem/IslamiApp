@@ -9,6 +9,8 @@
     "language" : "Language",
     "themes" : "Themes",
     "sora" : "Soret",
+    "dark_theme": "Dark Theme",
+    "light_theme": "Light Theme",
     "navBar_Quran" : "Quran",
     "navBar_Ahadees" : "Ahadees",
     "navBar_Tasbeeh" : "Tasbeeh",

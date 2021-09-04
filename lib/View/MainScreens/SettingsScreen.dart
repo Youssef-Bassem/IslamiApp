@@ -109,7 +109,7 @@ class _SideMenuState extends State<SideMenu> {
                       Navigator.pop(context);
                     }
                   },
-                  child: Center(child: myContainer("Dark theme")),
+                  child: Center(child: myContainer(AppLocalizations.of(context)!.dark_theme)),
                 ),
                 InkWell(
                   onTap: () {
@@ -118,7 +118,7 @@ class _SideMenuState extends State<SideMenu> {
                       Navigator.pop(context);
                     }
                   },
-                  child: Center(child: myContainer("Light theme")),
+                  child: Center(child: myContainer(AppLocalizations.of(context)!.light_theme)),
                 ),
               ],
             ),
